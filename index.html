@@ -1,1169 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fff0f5">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no, email=no, address=no">
+  <title>Happy Rakshabandhan ❤️</title>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Rakshabandhan ❤️</title>
-
-
-<!-- Fonts -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="css/style.css">
-
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 
 <body>
 
+  <div class="background" aria-hidden="true">
+    <div class="gradient"></div>
+    <div class="blur one"></div>
+    <div class="blur two"></div>
+    <div class="blur three"></div>
+    <div class="light-rays"></div>
+  </div>
 
-<!-- ================= BACKGROUND ================= -->
+  <div id="petals" aria-hidden="true"></div>
+  <div id="sparkles" aria-hidden="true"></div>
+  <div id="floatingLights" aria-hidden="true"></div>
 
+  <div id="loader" role="status" aria-live="polite" aria-label="Loading experience">
+    <div class="loader-content">
+      <div class="loader-heart" aria-hidden="true">❤️</div>
+      <h2>Creating Something Beautiful...</h2>
+      <p>A special memory for a special bond ✨</p>
+      <div class="loader-line" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
 
-<div class="background">
-
-
-<div class="gradient"></div>
-
-
-<div class="blur one"></div>
-<div class="blur two"></div>
-<div class="blur three"></div>
-
-
-<div class="light-rays"></div>
-
-
-</div>
-
-
-
-<!-- Floating Effects -->
-
-
-<div id="petals"></div>
-
-<div id="sparkles"></div>
-
-<div id="floatingLights"></div>
-
-
-
-
-
-
-
-
-<!-- ================= LOADER ================= -->
-
-
-<div id="loader">
-
-
-<div class="loader-content">
-
-
-<div class="loader-heart">
-
-❤️
-
-</div>
-
-
-
-<h2>
-
-Creating Something Beautiful...
-
-</h2>
-
-
-
-<p>
-
-A special memory for a special bond ✨
-
-</p>
-
-
-
-<div class="loader-line">
-
-<span></span>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-<!-- ================= COUNTDOWN SCREEN ================= -->
-
-<!-- =====================================
-        COUNTDOWN SCREEN
-===================================== -->
-
-<section id="countdownScreen">
-
-    <!-- Background Glow -->
-    <div class="countdown-bg"></div>
-
-    <!-- Floating Hearts -->
-    <div class="countdown-hearts"></div>
+  <section id="countdownScreen" aria-label="Countdown screen">
+    <div class="countdown-bg" aria-hidden="true"></div>
+    <div class="countdown-hearts" aria-hidden="true"></div>
 
     <div class="countdown-card">
+      <div class="countdown-top">
+        <div class="countdown-icon" aria-hidden="true">🪷</div>
+        <span class="countdown-badge">Rakshabandhan 2026</span>
+      </div>
 
-        <div class="countdown-top">
+      <h1>A Beautiful Journey Is About To Begin ❤️</h1>
 
-            <div class="countdown-icon">
-                🪷
-            </div>
+      <p class="countdown-desc">
+        Every second brings us closer to a day filled with love, blessings, memories and the beautiful bond between a brother and his wonderful sister.
+      </p>
 
-            <span class="countdown-badge">
-                Rakshabandhan 2026
-            </span>
+      <div class="timer-box" aria-label="Countdown timer">
+        <div class="time-card"><span id="day">00</span><small>Days</small></div>
+        <div class="time-card"><span id="hour">00</span><small>Hours</small></div>
+        <div class="time-card"><span id="minute">00</span><small>Minutes</small></div>
+        <div class="time-card"><span id="second">00</span><small>Seconds</small></div>
+      </div>
 
-        </div>
+      <div class="countdown-progress" aria-hidden="true">
+        <div id="progressFill"></div>
+      </div>
 
-        <h1>
-            A Beautiful Journey Is About To Begin ❤️
-        </h1>
+      <div class="countdown-quote">
+        ❝ Distance may change, time may pass, but a brother's love and prayers for his sister never fade. ❞
+      </div>
 
-        <p class="countdown-desc">
-            Every second brings us closer to a day filled with
-            love, blessings, memories and the beautiful bond
-            between a brother and his wonderful sister.
-        </p>
+      <div class="waiting-message">
+        🌸 Dear Abhilipsa 🌸<br><br>
+        Every heartbeat of this countdown carries a prayer for your happiness.<br><br>
+        I hope this little surprise makes you smile.<br>
+        ❤️ Happy Rakshabandhan ❤️
+      </div>
 
-        <!-- Countdown -->
-
-        <div class="timer-box">
-
-            <div class="time-card">
-
-                <span id="day">00</span>
-
-                <small>Days</small>
-
-            </div>
-
-            <div class="time-card">
-
-                <span id="hour">00</span>
-
-                <small>Hours</small>
-
-            </div>
-
-            <div class="time-card">
-
-                <span id="minute">00</span>
-
-                <small>Minutes</small>
-
-            </div>
-
-            <div class="time-card">
-
-                <span id="second">00</span>
-
-                <small>Seconds</small>
-
-            </div>
-
-        </div>
-
-        <!-- Progress -->
-
-        <div class="countdown-progress">
-
-            <div id="progressFill"></div>
-
-        </div>
-
-        <!-- Quote -->
-
-        <div class="countdown-quote">
-
-            ❝ Distance may change,
-            time may pass,
-            but a brother's love and prayers
-            for his sister never fade. ❞
-
-        </div>
-
-        <!-- Bottom -->
-
-        <div class="waiting-message">
-
-            🌸 Dear Abhilipsa 🌸
-
-            <br><br>
-
-            Every heartbeat of this countdown carries
-            a prayer for your happiness.
-
-            <br>
-
-            I hope this little surprise makes you smile.
-
-            ❤️ Happy Rakshabandhan ❤️
-
-        </div>
-
-        <!-- Small Decoration -->
-
-        <div class="countdown-stars">
-
-            ✨ ✨ ✨
-
-        </div>
-
+      <div class="countdown-stars" aria-hidden="true">✨ ✨ ✨</div>
     </div>
-
-</section>
-
-
-
-<!-- ================= MAIN EXPERIENCE ================= -->
-
-
-<main id="experience">
-
-
-
-
-
-
-
-<!-- ================= WELCOME ================= -->
-
-
-<section id="welcome" class="section">
-
-
-<div class="glass welcome-card">
-
-
-<span class="small-title">
-
-✨ A Beautiful Bond ✨
-
-</span>
-
-
-
-<h2>
-
-Happy
-
-</h2>
-
-
-
-<h1>
-
-Rakshabandhan ❤️
-
-</h1>
-
-
-
-<h3>
-
-For My Lovely Sister Abhilipsa
-
-</h3>
-
-
-
-
-<p>
-
-Some bonds are not made by words,
-
-they are created by love,
-
-care and countless memories.
-
-</p>
-
-
-
-
-<button id="startBtn">
-
-<span>
-Begin Journey
-</span>
-
-✨
-
-</button>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= GIFT ================= -->
-
-
-<section id="giftSection" class="section">
-
-
-<div class="glass-card gift-container">
-
-
-<div class="section-icon">
-
-🎁
-
-</div>
-
-
-
-
-<h1>
-
-A Special Gift For You ❤️
-
-</h1>
-
-
-
-
-<p>
-
-Something created with love and emotions.
-
-</p>
-
-
-
-
-
-<div class="gift-wrapper">
-
-
-<div class="gift-light"></div>
-
-
-<img
-
-src="assets/images/ceremony/gift-box.png"
-
-id="giftBox"
-
-alt="Gift Box">
-
-
-</div>
-
-
-
-
-<p class="tapText">
-
-✨ Tap the gift box to open ✨
-
-</p>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= RAKHI ================= -->
-
-
-<section id="rakhiSection" class="section">
-
-
-<div class="glass-card rakhi-container">
-
-
-
-<div class="section-icon">
-
-🪷
-
-</div>
-
-
-
-
-<h1>
-
-The Rakhi Moment ❤️
-
-</h1>
-
-
-
-
-<p>
-
-A small thread,
-
-a lifetime promise.
-
-</p>
-
-
-
-
-
-
-
-<div class="rakhi-box">
-
-
-<div class="rakhi-aura"></div>
-
-
-
-<img
-
-src="assets/images/ceremony/rakhi.png"
-
-id="rakhi"
-
-alt="Rakhi">
-
-
-</div>
-
-
-
-
-
-
-<p class="tapText">
-
-✨ Tap Rakhi To Begin ✨
-
-</p>
-
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= MEMORY ================= -->
-
-
-<section id="memorySection" class="section">
-
-
-<div class="memory-card glass-card">
-
-
-
-<div class="memory-header">
-
-
-<span>
-
-Our Journey
-
-</span>
-
-
-
-<h1>
-
-Beautiful Memories ❤️
-
-</h1>
-
-
-
-
-<p>
-
-Every picture carries a story.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="memory-image">
-
-
-<div class="image-glow"></div>
-
-
-<img
-
-id="memoryPhoto"
-
-src=""
-
-alt="Memory">
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="memory-content">
-
-
-<p id="quoteEnglish">
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="memory-footer">
-
-
-<span id="memoryCount">
-
-1 / 25
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="memory-buttons">
-
-
-
-<button id="prevBtn">
-
-◀
-
-<span>
-Previous
-</span>
-
-</button>
-
-
-
-
-<button id="skipBtn">
-
-✨
-
-<span>
-Skip
-</span>
-
-</button>
-
-
-
-
-
-<button id="nextBtn">
-
-<span>
-Next
-</span>
-
-▶
-
-</button>
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-</section>
-
-
-<!-- ==========================
-        LETTER SECTION
-========================== -->
-
-<section id="letterSection">
-
-    <!-- Envelope -->
-    <div class="envelope-box">
-
-        <div class="envelope" id="envelope">
-
-            <div class="envelope-front">
-                💌
-            </div>
-
-            <div class="letter-paper">
-                <h2>A Letter For You ❤️</h2>
-            </div>
-
+  </section>
+
+  <main id="experience">
+
+    <section id="welcome" class="section" aria-label="Welcome section">
+      <div class="glass welcome-card">
+        <span class="small-title">✨ A Beautiful Bond ✨</span>
+        <h2>Happy</h2>
+        <h1>Rakshabandhan ❤️</h1>
+        <h3>For My Lovely Sister Abhilipsa</h3>
+        <p>Some bonds are not made by words, they are created by love, care and countless memories.</p>
+        <button id="startBtn"><span>Begin Journey</span> ✨</button>
+      </div>
+    </section>
+
+    <section id="giftSection" class="section" aria-label="Gift section">
+      <div class="glass-card gift-container">
+        <div class="section-icon" aria-hidden="true">🎁</div>
+        <h1>A Special Gift For You ❤️</h1>
+        <p>Something created with love and emotions.</p>
+        <div class="gift-wrapper">
+          <div class="gift-light" aria-hidden="true"></div>
+          <img src="assets/images/ceremony/gift-box.png" id="giftBox" alt="Gift Box" loading="eager" decoding="async">
+        </div>
+        <p class="tapText">✨ Tap the gift box to open ✨</p>
+      </div>
+    </section>
+
+    <section id="rakhiSection" class="section" aria-label="Rakhi section">
+      <div class="glass-card rakhi-container">
+        <div class="section-icon" aria-hidden="true">🪷</div>
+        <h1>The Rakhi Moment ❤️</h1>
+        <p>A small thread, a lifetime promise.</p>
+        <div class="rakhi-box">
+          <div class="rakhi-aura" aria-hidden="true"></div>
+          <img src="assets/images/ceremony/rakhi.png" id="rakhi" alt="Rakhi" loading="lazy" decoding="async">
+        </div>
+        <p class="tapText">✨ Tap Rakhi To Begin ✨</p>
+      </div>
+    </section>
+
+    <section id="memorySection" class="section" aria-label="Memory section">
+      <div class="memory-card glass-card">
+        <div class="memory-header">
+          <span>Our Journey</span>
+          <h1>Beautiful Memories ❤️</h1>
+          <p>Every picture carries a story.</p>
         </div>
 
-        <p class="tap-open" id="tapOpen">
-            ✨ Tap the Envelope to Open ✨
-        </p>
+        <div class="memory-image">
+          <div class="image-glow" aria-hidden="true"></div>
+          <img id="memoryPhoto" src="" alt="Memory" loading="lazy" decoding="async">
+        </div>
 
-    </div>
+        <div class="memory-content">
+          <p id="quoteEnglish"></p>
+        </div>
 
-    <!-- Letter Page -->
-    <div class="letter-page" id="letterPage">
+        <div class="memory-footer">
+          <span id="memoryCount">1 / 25</span>
+        </div>
 
+        <div class="memory-buttons">
+          <button id="prevBtn">◀ <span>Previous</span></button>
+          <button id="skipBtn">✨ <span>Skip</span></button>
+          <button id="nextBtn"><span>Next</span> ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="letterSection" aria-label="Letter section">
+      <div class="envelope-box">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open letter">
+          <div class="envelope-front" aria-hidden="true">💌</div>
+          <div class="letter-paper">
+            <h2>A Letter For You ❤️</h2>
+          </div>
+        </div>
+        <p class="tap-open" id="tapOpen">✨ Tap the Envelope to Open ✨</p>
+      </div>
+
+      <div class="letter-page" id="letterPage">
         <h1>💌 Ek Chhoti Si Chitthi...</h1>
-
-        <div class="letter-date">
-            Rakshabandhan ❤️
-        </div>
+        <div class="letter-date">Rakshabandhan ❤️</div>
 
         <div class="letter-content">
+          <p class="letter-start">Dear Didi,</p>
 
-        <p class="letter-start">
-        Dear Didi,
-        </p>
+          <p>Kabhi kabhi sochta hoon...
+ki waqt kitni jaldi badal jaata hai.
 
-        <p>
-        Kabhi kabhi sochta hoon...
-        ki waqt kitni jaldi badal jaata hai.
+Kal tak hum bina kisi tension ke haste the,
+aur aaj har kisi ki apni alag zimmedariyaan hain.
 
-        Kal tak hum bina kisi tension ke haste the,
-        aur aaj har kisi ki apni alag zimmedariyaan hain.
+Lekin ek cheez kabhi nahi badli...</p>
 
-        Lekin ek cheez kabhi nahi badli...
-        </p>
+          <div class="letter-quote">"Aapka mere liye hamesha hona."</div>
 
-        <div class="letter-quote">
-        "Aapka mere liye hamesha hona."
+          <p>Pehle pehle wo ek dusre ke strangers rehna,
+phir ek classmate banna, 
+phir ab life ka sabse important hissa banna...
+
+Shayad tab humein ehsaas nahi tha,
+ki wahi pal ek din
+hamari sabse khoobsurat memories ban jaayenge.</p>
+
+          <p>Didi,
+
+Maine shayad kabhi itna express nahi kiya,
+
+lekin aapne hamesha mere liye jo bhi kiya...
+
+main uske liye dil se thankful hoon.</p>
+
+          <div class="letter-quote">"Har daant ke peeche care thi...
+aur har smile ke peeche pyaar."</div>
+
+          <p>Life aaj pehle jaisi nahi rahi.
+
+Sab apni apni responsibilities mein busy ho gaye hain.
+
+Lekin meri life mein aapki jagah...
+
+kabhi nahi badlegi.</p>
+
+          <p>Main dil se dua karta hoon...
+
+Aap hamesha khush raho.
+
+Har sapna poora ho.
+
+Har musibat aapse door rahe.
+
+Aur aapki muskaan kabhi kam na ho.</p>
+
+          <div class="letter-quote">"Aap mere sirf didi nahi...
+mere life ke ek important insaan bhi ho."</div>
+
+          <p>Is Rakshabandhan par
+
+mere paas koi mehenga gift nahi hai.
+
+Bas ye chhoti si app...
+
+aur usme likha hua mera dil.</p>
+
+          <p>Bas ek vaada...
+
+Jab bhi aapko meri zarurat hogi,
+
+main hamesha aapke saath khada rahunga.</p>
+
+          <div class="letter-ending">
+            ❤️ Happy Rakshabandhan ❤️<br><br>
+            With Lots Of Love,<br><br>
+            <b>Aapka Chhota Bhai Pranjal 🤍</b>
+          </div>
         </div>
 
-        <p>
-        Pehle pehle wo ek dusre ke strangers rehna,
-        phir ek classmate banna, 
-        phir ab life ka sabse important hissa banna...
+        <button id="continueBtn">Continue ❤️</button>
+      </div>
+    </section>
 
-        Shayad tab humein ehsaas nahi tha,
-        ki wahi pal ek din
-        hamari sabse khoobsurat memories ban jaayenge.
-        </p>
-
-        <p>
-        Didi,
-
-        Maine shayad kabhi itna express nahi kiya,
-
-        lekin aapne hamesha mere liye jo bhi kiya...
-
-        main uske liye dil se thankful hoon.
-        </p>
-
-        <div class="letter-quote">
-        "Har daant ke peeche care thi...
-        aur har smile ke peeche pyaar."
-        </div>
-
-        <p>
-        Life aaj pehle jaisi nahi rahi.
-
-        Sab apni apni responsibilities mein busy ho gaye hain.
-
-        Lekin meri life mein aapki jagah...
-
-        kabhi nahi badlegi.
-        </p>
-
-        <p>
-        Main dil se dua karta hoon...
-
-        Aap hamesha khush raho.
-
-        Har sapna poora ho.
-
-        Har musibat aapse door rahe.
-
-        Aur aapki muskaan kabhi kam na ho.
-        </p>
-
-        <div class="letter-quote">
-        "Aap mere sirf didi nahi...
-        mere life ke ek important insaan bhi ho."
-        </div>
-
-        <p>
-        Is Rakshabandhan par
-
-        mere paas koi mehenga gift nahi hai.
-
-        Bas ye chhoti si app...
-
-        aur usme likha hua mera dil.
-        </p>
-
-        <p>
-        Bas ek vaada...
-
-        Jab bhi aapko meri zarurat hogi,
-
-        main hamesha aapke saath khada rahunga.
-        </p>
-
-        <div class="letter-ending">
-
-        ❤️ Happy Rakshabandhan ❤️
-
-        <br><br>
-
-        With Lots Of Love,
-
-        <br>
-
-    <b>Aapka Chhota Bhai Pranjal 🤍</b>
-
-        </div>
-
-        </div>
-
-        <button id="continueBtn">
-            Continue ❤️
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ==========================
-        PROMISE SECTION
-========================== -->
-
-<section id="promiseSection">
-
-    <div class="promise-card">
-
-        <div class="promise-icon">
-            🤍
-        </div>
-
+    <section id="promiseSection" aria-label="Promise section">
+      <div class="promise-card">
+        <div class="promise-icon" aria-hidden="true">🤍</div>
         <h1>Ek Chhota Sa Vaada...</h1>
-
         <div class="promise-text">
-
-            <p class="line">
-                Shayad main perfect bhai kabhi na ban paun...
-            </p>
-
-            <p class="line">
-                Shayad kabhi kabhi aapse lad bhi jaun...
-            </p>
-
-            <p class="line">
-                Shayad har baat keh bhi na paun...
-            </p>
-
-            <p class="line highlight">
-                Lekin ek baat kabhi nahi badlegi...
-            </p>
-
-            <p class="line big">
-                ❤️
-            </p>
-
-            <p class="line final">
-                Jab bhi aapko meri zarurat hogi...
-            </p>
-
-            <p class="line final">
-                Main hamesha aapke saath rahunga.
-            </p>
-
-            <p class="line final">
-                Chahe waqt badal jaaye...
-            </p>
-
-            <p class="line final">
-                Lekin mera pyaar aur respect kabhi nahi badlega.
-            </p>
-
+          <p class="line">Shayad main perfect bhai kabhi na ban paun...</p>
+          <p class="line">Shayad kabhi kabhi aapse lad bhi jaun...</p>
+          <p class="line">Shayad har baat keh bhi na paun...</p>
+          <p class="line highlight">Lekin ek baat kabhi nahi badlegi...</p>
+          <p class="line big">❤️</p>
+          <p class="line final">Jab bhi aapko meri zarurat hogi...</p>
+          <p class="line final">Main hamesha aapke saath rahunga.</p>
+          <p class="line final">Chahe waqt badal jaaye...</p>
+          <p class="line final">Lekin mera pyaar aur respect kabhi nahi badlega.</p>
         </div>
+        <button id="promiseBtn">Continue ❤️</button>
+      </div>
+    </section>
 
-        <button id="promiseBtn">
-
-            Continue ❤️
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ==========================
-        BLESSINGS
-========================== -->
-
-<section id="blessingSection">
-
-    <div class="blessing-card">
-
-        <div class="blessing-icon">
-            🌸
-        </div>
-
+    <section id="blessingSection" aria-label="Blessing section">
+      <div class="blessing-card">
+        <div class="blessing-icon" aria-hidden="true">🌸</div>
         <h1>Blessings For You</h1>
-
         <p id="blessingText"></p>
+        <div class="blessingCount"><span id="blessingCounter">1 / 10</span></div>
+        <button id="nextBlessingBtn">Next ❤️</button>
+      </div>
+    </section>
 
-        <div class="blessingCount">
-            <span id="blessingCounter">
-                1 / 10
-            </span>
-        </div>
+    <section id="awardSection" aria-label="Award section">
+      <div id="awardIntro">
+        <div class="introCircle" aria-hidden="true">❤️</div>
+        <h3 id="introLine">Every beautiful journey...</h3>
+        <h1 id="introTitle">deserves a beautiful ending.</h1>
+        <p id="loadingText">Collecting Memories...</p>
+        <div class="loadingBar" aria-hidden="true"><div class="loadingFill"></div></div>
+        <div class="loadingDots" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
 
-        <button id="nextBlessingBtn">
-            Next ❤️
-        </button>
+      <div class="awardFlash" aria-hidden="true"></div>
 
-    </div>
-
-</section>
-
-<!-- =====================================
-        AWARD SECTION
-===================================== -->
-
-<section id="awardSection">
-
-    <!-- ================= INTRO ================= -->
-
-    <div id="awardIntro">
-
-        <div class="introCircle">
-
-            ❤️
-
-        </div>
-
-        <h3 id="introLine">
-
-            Every beautiful journey...
-
-        </h3>
-
-        <h1 id="introTitle">
-
-            deserves a beautiful ending.
-
-        </h1>
-
-        <p id="loadingText">
-
-            Collecting Memories...
-
-        </p>
-
-        <div class="loadingBar">
-
-            <div class="loadingFill"></div>
-
-        </div>
-
-        <div class="loadingDots">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= LIGHT FLASH ================= -->
-
-    <div class="awardFlash"></div>
-
-
-    <!-- ================= AWARD ================= -->
-
-    <div class="award-card">
-
-        <div class="certificate-pattern"></div>
-
-        <div class="awardGlow"></div>
-
-        <div class="shine"></div>
-
-        <div class="award-top">
-
-            👑
-
-        </div>
-
-        <small>
-
-            CERTIFICATE OF APPRECIATION
-
-        </small>
-
-        <h1>
-
-            🏆
-
-        </h1>
-
-        <h2>
-
-            World's Best Sister
-
-        </h2>
-
-        <p class="award-line">
-
-            This certificate is proudly presented to
-
-        </p>
-
-        <h3 class="award-name">
-
-            ❤️ My Lovely Didi Abhilipsa ❤️
-
-        </h3>
-
-        <p class="award-desc">
-
-            For filling every ordinary day with
-            extraordinary memories,
-            for every smile,
-            every care,
-            every sacrifice,
-            every laugh,
-            and for being one of the greatest blessings
-            in my life.
-
-        </p>
-
+      <div class="award-card">
+        <div class="certificate-pattern" aria-hidden="true"></div>
+        <div class="awardGlow" aria-hidden="true"></div>
+        <div class="shine" aria-hidden="true"></div>
+        <div class="award-top" aria-hidden="true">👑</div>
+        <small>CERTIFICATE OF APPRECIATION</small>
+        <h1>🏆</h1>
+        <h2>World's Best Sister</h2>
+        <p class="award-line">This certificate is proudly presented to</p>
+        <h3 class="award-name">❤️ My Lovely Didi Abhilipsa ❤️</h3>
+        <p class="award-desc">For filling every ordinary day with extraordinary memories, for every smile, every care, every sacrifice, every laugh, and for being one of the greatest blessings in my life.</p>
         <div class="divider"></div>
-
         <div class="awardReasons">
-
-            <div>🌸 Endless Love</div>
-
-            <div>🤍 Unlimited Care</div>
-
-            <div>😊 Countless Smiles</div>
-
-            <div>📸 Beautiful Memories</div>
-
-            <div>✨ Lifetime Support</div>
-
-            <div>🌼 Pure Heart</div>
-
-            <div>💖 Infinite Kindness</div>
-
-            <div>⭐ Best Sister Ever</div>
-
+          <div>🌸 Endless Love</div>
+          <div>🤍 Unlimited Care</div>
+          <div>😊 Countless Smiles</div>
+          <div>📸 Beautiful Memories</div>
+          <div>✨ Lifetime Support</div>
+          <div>🌼 Pure Heart</div>
+          <div>💖 Infinite Kindness</div>
+          <div>⭐ Best Sister Ever</div>
         </div>
-
         <div class="divider"></div>
+        <blockquote>"Some superheroes don't wear capes... they simply become an amazing sister."</blockquote>
+        <p class="award-footer">Happy Rakshabandhan ❤️<br><br>Thank you for making my life brighter every single day.<br><br>With Endless Love,<br><br><b>Your Brother Pranjal 🤍</b></p>
+        <button id="awardContinue">Continue ❤️</button>
+      </div>
+    </section>
 
-        <blockquote>
+    <section id="wishSection" aria-label="Wish section">
+      <div class="wishCard">
+        <div class="wishIcon" aria-hidden="true">🌸</div>
+        <h3>One Last Wish...</h3>
+        <h1>For My Lovely Sister ❤️</h1>
+        <div id="wishLines"></div>
+        <button id="wishContinue">Continue ❤️</button>
+      </div>
+    </section>
 
-            "Some superheroes don't wear capes...
+    <section id="starSection" aria-label="Star section">
+      <div class="sky" aria-hidden="true"></div>
 
-            they simply become an amazing sister."
+      <div class="star-header">
+        <span class="small-title">✨ A Sky Full Of Blessings ✨</span>
+        <h1>One Last Surprise ❤️</h1>
+        <p>Every shining star carries a blessing made especially for you.</p>
+      </div>
 
-        </blockquote>
+      <div class="star-counter">
+        <span id="starCount">0 / 10 Stars Collected</span>
+      </div>
 
-        <p class="award-footer">
-
-            Happy Rakshabandhan ❤️
-
-            <br><br>
-
-            Thank you for making my life
-            brighter every single day.
-
-            <br><br>
-
-            With Endless Love,
-
-            <br>
-
-            <b>Your Brother Pranjal 🤍</b>
-
-        </p>
-
-        <button id="awardContinue">
-
-            Continue ❤️
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-            WISH SECTION
-===================================== -->
-
-<section id="wishSection">
-
-    <div class="wishCard">
-
-        <div class="wishIcon">
-
-            🌸
-
-        </div>
-
-        <h3>
-
-            One Last Wish...
-
-        </h3>
-
-        <h1>
-
-            For My Lovely Sister ❤️
-
-        </h1>
-
-        <div id="wishLines">
-
-        </div>
-
-        <button id="wishContinue">
-
-            Continue ❤️
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-        STARRY WISHES SECTION
-===================================== -->
-
-<section id="starSection">
-
-    <!-- Background Stars -->
-    <div class="sky"></div>
-
-    <!-- Header -->
-    <div class="star-header">
-
-        <span class="small-title">
-            ✨ A Sky Full Of Blessings ✨
-        </span>
-
-        <h1>
-            One Last Surprise ❤️
-        </h1>
-
-        <p>
-            Every shining star carries
-            a blessing made especially
-            for you.
-        </p>
-
-    </div>
-
-    <!-- Counter -->
-
-    <div class="star-counter">
-
-        <span id="starCount">
-
-            0 / 10 Stars Collected
-
-        </span>
-
-    </div>
-
-    <!-- Stars Container -->
-
-    <div id="starContainer">
-
+      <div id="starContainer">
         <div class="wish-star" data-id="0">⭐</div>
         <div class="wish-star" data-id="1">⭐</div>
         <div class="wish-star" data-id="2">⭐</div>
@@ -1174,302 +344,86 @@ Next
         <div class="wish-star" data-id="7">⭐</div>
         <div class="wish-star" data-id="8">⭐</div>
         <div class="wish-star" data-id="9">⭐</div>
+      </div>
 
-    </div>
+      <div id="starMessageCard">
+        <div class="message-glow" aria-hidden="true"></div>
+        <h2>🌟 A Blessing</h2>
+        <p id="starMessage"></p>
+        <button id="nextStarBtn">Continue ❤️</button>
+      </div>
 
-    <!-- Message Card -->
+      <div id="finalStarBox">
+        <div id="finalStar">🌟</div>
+        <h2>The Brightest Star...</h2>
+        <p>has always been you, Didi. ❤️</p>
+        <button id="finishJourney">Finish Journey ❤️</button>
+      </div>
+    </section>
 
-    <div id="starMessageCard">
-
-        <div class="message-glow"></div>
-
-        <h2>
-
-            🌟 A Blessing
-
-        </h2>
-
-        <p id="starMessage">
-
-        </p>
-
-        <button id="nextStarBtn">
-
-            Continue ❤️
-
-        </button>
-
-    </div>
-
-    <!-- Final Star -->
-
-    <div id="finalStarBox">
-
-        <div id="finalStar">
-
-            🌟
-
-        </div>
-
-        <h2>
-
-            The Brightest Star...
-
-        </h2>
-
-        <p>
-
-            has always been you,
-            Didi. ❤️
-
-        </p>
-
-        <button id="finishJourney">
-
-            Finish Journey ❤️
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-            FINAL SECTION
-===================================== -->
-
-<section id="finalSection">
-
-    <div class="final-bg">
-
+    <section id="finalSection" aria-label="Final section">
+      <div class="final-bg" aria-hidden="true">
         <div class="stars-bg"></div>
-
         <div class="hearts-bg"></div>
+      </div>
 
-    </div>
-
-    <div class="final-content">
-
-        <div id="finalHeart">
-
-            ❤️
-
-        </div>
-
-        <h1 id="finalTitle">
-
-            Happy Rakshabandhan
-
-        </h1>
-
-        <div id="finalText">
-
-        </div>
-
+      <div class="final-content">
+        <div id="finalHeart" aria-hidden="true">❤️</div>
+        <h1 id="finalTitle">Happy Rakshabandhan</h1>
+        <div id="finalText"></div>
         <div class="final-photo-box">
-
-            <img id="finalPhoto" src="">
-
+          <img id="finalPhoto" src="" alt="Final memory" loading="lazy" decoding="async">
         </div>
-
         <div class="final-buttons">
-
-            <button id="replayBtn">
-
-                ❤️ Replay Journey
-
-            </button>
-
-            <button id="galleryBtn">
-
-                🖼️ Memory Gallery
-
-            </button>
-
-            <button id="exitBtn">
-
-                🤍 Exit
-
-            </button>
-
+          <button id="replayBtn">❤️ Replay Journey</button>
+          <button id="galleryBtn">🖼️ Memory Gallery</button>
+          <button id="exitBtn">🤍 Exit</button>
         </div>
+      </div>
+    </section>
 
+    <section id="memoryGallery" aria-label="Memory gallery">
+      <div class="gallery-bg" aria-hidden="true"></div>
+      <div class="gallery-header">
+        <span class="small-title">❤️ Forever Memories ❤️</span>
+        <h1>Our Beautiful Journey</h1>
+        <p>Every picture is a memory... Every memory is a blessing.</p>
+      </div>
+      <div class="gallery-counter"><span id="galleryCounter">0 / 35 Memories</span></div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <button id="closeGallery">❤️ Back</button>
+    </section>
+
+    <div id="imageViewer" aria-label="Image viewer">
+      <div class="viewer-overlay" aria-hidden="true"></div>
+      <button id="viewerClose" aria-label="Close image viewer">✕</button>
+      <button id="viewerBack">← Back</button>
+      <button id="viewerPrev" aria-label="Previous image">❮</button>
+      <img id="viewerImage" src="" alt="Selected memory" loading="eager" decoding="async">
+      <button id="viewerNext" aria-label="Next image">❯</button>
+      <p id="viewerCount">1 / 35</p>
     </div>
 
-</section>
-
-<!-- =====================================
-        MEMORY GALLERY
-===================================== -->
-
-<section id="memoryGallery">
-
-    <div class="gallery-bg"></div>
-
-    <!-- Header -->
-
-    <div class="gallery-header">
-
-        <span class="small-title">
-
-            ❤️ Forever Memories ❤️
-
-        </span>
-
-        <h1>
-
-            Our Beautiful Journey
-
-        </h1>
-
-        <p>
-
-            Every picture is a memory...
-            Every memory is a blessing.
-
-        </p>
-
-    </div>
-
-    <!-- Counter -->
-
-    <div class="gallery-counter">
-
-        <span id="galleryCounter">
-
-            0 / 35 Memories
-
-        </span>
-
-    </div>
-
-    <!-- Photos -->
-
-    <div class="gallery-grid" id="galleryGrid">
-
-        <!-- JS will create all images here -->
-
-    </div>
-
-    <!-- Close -->
-
-    <button id="closeGallery">
-
-        ❤️ Back
-
-    </button>
-
-</section>
-
-
-<!-- =====================================
-        IMAGE VIEWER
-===================================== -->
-
-<div id="imageViewer">
-
-    <div class="viewer-overlay"></div>
-
-    <button id="viewerClose">
-
-        ✕
-
-    </button>
-
-    <button id="viewerBack">
-        ← Back
-    </button>
-
-    <button id="viewerPrev">
-
-        ❮
-
-    </button>
-
-    <img id="viewerImage" src="">
-
-    <button id="viewerNext">
-
-        ❯
-
-    </button>
-
-    <p id="viewerCount">
-
-        1 / 35
-
-    </p>
-
-</div>
-
-</main>
-
-
-
-
-
-
-
-
-
-<!-- ================= MUSIC ================= -->
-
-
-<audio id="bgMusic" loop preload="auto">
-
-
-<source src="assets/music/bg.mp3" type="audio/mp3">
-
-
-</audio>
-
-
-
-
-
-<button id="musicBtn" aria-label="Music Control">
-
-
-🔇
-
-
-</button>
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
-
-<!-- ================= SCRIPTS ================= -->
-
-
-<script src="js/particles.js"></script>
-
-<script src="js/music.js"></script>
-
-<script src="js/quotes.js"></script>
-
-<script src="js/gallery.js"></script>
-
-<script src="js/timer.js"></script>
-
-<script src="js/award.js"></script>
-
-<script src="js/wish.js"></script>
-
-<script src="js/star.js"></script>
-
-<script src="js/final.js"></script>
-
-<script src="js/gallery-viewer.js"></script>
-
-<script src="js/app.js"></script>
-
-
+  </main>
+
+  <audio id="bgMusic" loop preload="auto" aria-label="Background music">
+    <source src="assets/music/bg.mp3" type="audio/mp3">
+  </audio>
+
+  <button id="musicBtn" aria-label="Music Control">🔇</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/quotes.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/award.js"></script>
+  <script src="js/wish.js"></script>
+  <script src="js/star.js"></script>
+  <script src="js/final.js"></script>
+  <script src="js/gallery-viewer.js"></script>
+  <script src="js/app.js"></script>
 
 </body>
-
 </html>
