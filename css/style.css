@@ -196,8 +196,19 @@ a:focus-visible, [tabindex]:focus-visible{
    SHARED PANEL PATTERN
 ===================================================== */
 
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
 .section,
-#countdownScreen,
+#welcome,
 #giftSection,
 #rakhiSection,
 #memorySection,
@@ -208,19 +219,23 @@ a:focus-visible, [tabindex]:focus-visible{
 #wishSection,
 #starSection,
 #finalSection,
-#memoryGallery,
-#imageViewer{
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:var(--pad);
-  overflow-y:auto;
-  overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior:contain;
+#memoryGallery{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px 15px;
+
+    box-sizing:border-box;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    -webkit-overflow-scrolling:touch;
 }
 
 #giftSection,#rakhiSection,#memorySection,#letterSection,
@@ -2091,4 +2106,17 @@ a:focus-visible, [tabindex]:focus-visible{
   .background,.blur,.petal,.sparkle,.floating-light,.loader-heart,.countdown-icon,.gift-wrapper,#giftBox,#rakhi,.section-icon,.award-top,.wishIcon,#finalHeart{
     animation:none !important;
   }
+}
+
+@media (max-width:768px){
+
+    .award-card,
+    .wishCard,
+    .promise-card,
+    .blessing-card,
+    .memory-card,
+    .glass-card{
+        margin:40px 0;
+    }
+
 }
