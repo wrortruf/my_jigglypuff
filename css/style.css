@@ -196,6 +196,17 @@ a:focus-visible, [tabindex]:focus-visible{
    SHARED PANEL PATTERN
 ===================================================== */
 
+#memorySection{
+    justify-content:flex-start;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.memory-card{
+    max-height:none;
+    overflow:visible;
+}
+
 .section,
 #countdownScreen,
 #giftSection,
