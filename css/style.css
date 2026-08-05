@@ -196,17 +196,38 @@ a:focus-visible, [tabindex]:focus-visible{
    SHARED PANEL PATTERN
 ===================================================== */
 
+/* ==========================
+   MEMORY SECTION SCROLL FIX
+========================== */
+
 #memorySection{
-    justify-content:flex-start;
-    padding-top:40px;
-    padding-bottom:40px;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .memory-card{
-    max-height:none;
-    overflow:visible;
+    width: min(900px,100%);
+    margin: auto;
+    max-height: none;
+    overflow: visible;
+}
+#memorySection .memory-card{
+    max-height: none !important;
+    overflow: visible !important;
 }
 
+.memory-image img{
+    width:100%;
+    height:auto;
+    display:block;
+}
 .section,
 #countdownScreen,
 #giftSection,
