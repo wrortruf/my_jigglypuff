@@ -301,7 +301,7 @@ if (nextBlessingBtn) {
 
             blessingSection.classList.remove("active");
 
-            openSecret();
+            openSecretPuzzle();
 
             return;
 

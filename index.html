@@ -270,168 +270,223 @@ main hamesha aapke saath khada rahunga.</p>
     </section>
 
     <!-- =====================================
-            SECRET REVEAL SECTION
+            SECRET PUZZLE
+            REPLACES SECRET REVEAL
     ===================================== -->
 
     <section id="secretSection">
+
+        <!-- Background -->
 
         <div class="secret-bg">
 
             <div class="secret-glow glow-one"></div>
             <div class="secret-glow glow-two"></div>
 
+            <div class="floating-piece piece-one">🧩</div>
+            <div class="floating-piece piece-two">✨</div>
+            <div class="floating-piece piece-three">❤️</div>
+            <div class="floating-piece piece-four">🌸</div>
+
         </div>
 
-        <div class="secret-card">
 
-            <!-- Intro -->
-            <div id="secretIntro">
+        <!-- =================================
+                INTRO
+        ================================= -->
 
-                <div class="secret-icon">
-                    🔐
-                </div>
+        <div id="secretIntro" class="secret-card">
 
-                <span class="small-title">
-                    ✨ Something Hidden ✨
-                </span>
-
-                <h1>
-                    Ek Secret Hai... ❤️
-                </h1>
-
-                <p>
-                    Is journey mein ek chhoti si baat hai
-                    jo shayad maine kabhi properly nahi kahi...
-                </p>
-
-                <p class="secret-hint">
-                    🔒 Sirf aapke liye hai.
-                </p>
-
-                <button id="unlockSecretBtn">
-                    🔐 Unlock Secret
-                </button>
-
+            <div class="secret-icon">
+                🧩
             </div>
 
+            <span class="small-title">
+                ✨ A Little Secret ✨
+            </span>
 
-            <!-- Lock Screen -->
+            <h1>
+                Something Is Missing...
+            </h1>
 
-            <div id="secretLock" class="secret-screen">
+            <p>
+                Ek chhota sa secret hai jo maine
+                in memories ke beech chhupa diya hai.
+            </p>
 
-                <div class="lock-animation">
-                    🔒
-                </div>
+            <p class="secret-hint">
+                Lekin use paane ke liye...
+                tumhe puzzle solve karna hoga. ❤️
+            </p>
 
-                <h2>
-                    Thoda sa sochna padega... 👀
-                </h2>
+            <button id="unlockSecretBtn">
+                Start The Puzzle 🧩
+            </button>
 
-                <p>
-                    Ek special question ka answer do.
-                </p>
+        </div>
 
-                <div class="secret-question">
 
-                    <span>
-                        💭 Mere liye sabse special kaun hai?
+        <!-- =================================
+                PUZZLE
+        ================================= -->
+
+        <div id="secretPuzzle" class="secret-card">
+
+            <div class="secret-header">
+
+                <div>
+
+                    <span class="small-title">
+                        🔐 Secret Puzzle
                     </span>
 
                 </div>
 
-                <div class="secret-options">
-
-                    <button class="secret-option" data-answer="wrong">
-                        😎 Main khud
-                    </button>
-
-                    <button class="secret-option" data-answer="correct">
-                        ❤️ Meri Didi
-                    </button>
-
-                    <button class="secret-option" data-answer="wrong">
-                        🍕 Pizza
-                    </button>
-
-                    <button class="secret-option" data-answer="wrong">
-                        💤 Neend
-                    </button>
-
-                </div>
-
-                <p id="secretFeedback"></p>
+                <span id="secretMoves">
+                    Moves: 0
+                </span>
 
             </div>
 
 
-            <!-- Secret Revealed -->
+            <h2>
+                Put The Pieces Together ❤️
+            </h2>
 
-            <div id="secretReveal" class="secret-screen">
+            <p class="puzzle-instruction">
+                Do pieces ko tap karke unhe swap karo.
+            </p>
 
-                <div class="reveal-heart">
+
+            <!-- Progress -->
+
+            <div class="secret-progress">
+
+                <div id="secretProgressFill"></div>
+
+            </div>
+
+            <p id="secretProgressText">
+                0 / 9 Pieces
+            </p>
+
+
+            <!-- Puzzle Board -->
+
+            <div id="secretPuzzleBoard">
+
+                <!-- JavaScript puzzle pieces yahan banayega -->
+
+            </div>
+
+
+            <button id="secretHintBtn">
+                💡 Hint
+            </button>
+
+
+            <p id="secretFeedback"></p>
+
+        </div>
+
+
+        <!-- =================================
+                COMPLETED
+        ================================= -->
+
+        <div id="secretReveal" class="secret-card">
+
+            <div class="reveal-icon">
+                🧩
+            </div>
+
+            <div class="reveal-sparkles">
+                ✨ ✨ ✨
+            </div>
+
+
+            <h1>
+                You Found It! ❤️
+            </h1>
+
+            <p class="reveal-subtitle">
+                All the pieces finally came together...
+            </p>
+
+
+            <!-- Completed Memory -->
+
+            <div class="secret-memory">
+
+                <div class="secret-memory-glow"></div>
+
+                <img
+                    id="secretMemoryPhoto"
+                    src=""
+                    alt="Secret Memory"
+                >
+
+            </div>
+
+
+            <!-- Reveal Text -->
+
+            <div id="secretMessage">
+
+                <p class="reveal-line">
+                    You found the missing piece...
+                </p>
+
+                <p class="reveal-line">
+                    But the real secret wasn't the picture.
+                </p>
+
+                <p class="reveal-highlight">
+                    ❤️ It was the person behind all these memories.
+                </p>
+
+            </div>
+
+
+            <!-- Final Secret -->
+
+            <div class="final-secret">
+
+                <div class="final-secret-heart">
                     ❤️
                 </div>
 
-                <span class="small-title">
-                    🔓 Secret Unlocked
-                </span>
+                <h2>
+                    The Missing Piece
+                </h2>
 
-                <h1>
-                    Sach Bataun? ❤️
-                </h1>
+                <p>
+                    Har puzzle ka ek missing piece hota hai...
+                </p>
 
-                <div class="secret-message">
+                <p>
+                    Aur meri life ke puzzle mein...
+                </p>
 
-                    <p>
-                        Shayad main har baar keh nahi paata...
-                    </p>
+                <p class="final-secret-line">
+                    Woh piece hamesha aap rahengi, Didi. 🤍
+                </p>
 
-                    <p>
-                        Shayad mazaak aur nok-jhok ke peeche
-                        apni feelings chhupa deta hoon...
-                    </p>
 
-                    <p class="secret-highlight">
-                        Lekin aap mere liye sirf meri didi nahi ho.
-                    </p>
+                <div class="secret-quote">
 
-                    <p>
-                        Aap meri life ka woh hissa ho
-                        jise main chahe kitna bhi bada ho jaun,
-                        kabhi khona nahi chahta.
-                    </p>
-
-                    <p>
-                        Aapke saath bitaye hue chhote-chhote moments
-                        mere liye bahut special hain.
-                    </p>
-
-                    <div class="secret-quote">
-
-                        ❝ Kuch rishte explain nahi kiye jaate...
-                        bas dil se feel kiye jaate hain. ❞
-
-                    </div>
-
-                    <p class="secret-final">
-
-                        Aur hamara rishta mere liye
-                        unhi khoobsurat rishton mein se ek hai. 🤍
-                    </p>
-
-                    <p class="secret-sign">
-
-                        — Aapka Nikamma Bhai ❤️
-
-                    </p>
+                    “Some memories are beautiful
+                    because of the people
+                    who are part of them.”
 
                 </div>
 
-                <button id="secretContinueBtn">
-                    Continue To Quiz ❤️
-                </button>
-
             </div>
+
+
+            <button id="secretContinueBtn">
+                Continue To Quiz ❤️
+            </button>
 
         </div>
 
