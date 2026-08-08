@@ -3,112 +3,128 @@
 // =====================================
 
 const finalSection = document.getElementById("finalSection");
-
 const finalText = document.getElementById("finalText");
 
+const finalPhoto = document.getElementById("finalPhoto");
 const finalPhotoBox = document.querySelector(".final-photo-box");
-
 const finalButtons = document.querySelector(".final-buttons");
 
 const replayBtn = document.getElementById("replayBtn");
-
 const galleryBtn = document.getElementById("galleryBtn");
-
 const exitBtn = document.getElementById("exitBtn");
 
+
+// =====================================
+// FINAL TEXT
 // =====================================
 
 const finalLines = [
 
-"Har safar ka ek khoobsurat anjaam hota hai... ❤️",
+    "Har safar ka ek khoobsurat anjaam hota hai... ❤️",
 
-"Aur meri is chhoti si journey ka sabse khoobsurat hissa hamesha aap hi rahengi.",
+    "Aur meri is chhoti si journey ka sabse khoobsurat hissa hamesha aap hi rahengi.",
 
-"Chahe waqt kitna bhi badal jaaye...",
+    "Chahe waqt kitna bhi badal jaaye...",
 
-"Chahe hum kitne bhi bade kyun na ho jaayein...",
+    "Chahe hum kitne bhi bade kyun na ho jaayein...",
 
-"Mere liye aap hamesha meri sabse pyaari aur sabse khaas didi rahengi. 🤍",
+    "Mere liye aap hamesha meri sabse pyaari aur sabse khaas didi rahengi. 🤍",
 
-"Thank You...",
+    "Thank You...",
 
-"😊 Har us muskaan ke liye jo aapne meri wajah se di.",
+    "😊 Har us muskaan ke liye jo aapne meri wajah se di.",
 
-"🤗 Har us care ke liye jo aapne bina kahe ki.",
+    "🤗 Har us care ke liye jo aapne bina kahe ki.",
 
-"🌸 Har us dua ke liye jo aapne mere liye maangi.",
+    "🌸 Har us dua ke liye jo aapne mere liye maangi.",
 
-"💖 Har us pyaar ke liye jo aapne hamesha mujhe diya.",
+    "💖 Har us pyaar ke liye jo aapne hamesha mujhe diya.",
 
-"📸 Har us yaad ke liye jo humne saath milkar banayi.",
+    "📸 Har us yaad ke liye jo humne saath milkar banayi.",
 
-"✨ Bhagwan se meri bas itni si dua hai...",
+    "✨ Bhagwan se meri bas itni si dua hai...",
 
-"Ki aapki zindagi hamesha khushiyon, pyaar aur sukoon se bhari rahe.",
+    "Ki aapki zindagi hamesha khushiyon, pyaar aur sukoon se bhari rahe.",
 
-"❤️ Happy Rakshabandhan, Didi! ❤️",
+    "❤️ Happy Rakshabandhan, Didi! ❤️",
 
-"Always With Love...",
+    "Always With Love...",
 
-"🤍 Your Nikamma Bhai Pranjal 🤍"
-
-];
-
-const finalPhotos=[
-
-"assets/images/memories/1.png",
-
-"assets/images/memories/2.png",
-
-"assets/images/memories/3.png",
-
-"assets/images/memories/5.png",
-
-"assets/images/memories/19.png",
-
-"assets/images/memories/9.png",
-
-"assets/images/memories/13.png",
-
-"assets/images/memories/16.png",
-
-"assets/images/memories/12.png",
-
-"assets/images/memories/25.png"
+    "🤍 Your Nikamma Bhai Pranjal 🤍"
 
 ];
+
 
 // =====================================
+// FINAL PHOTOS
+// =====================================
 
-function openFinal(){
+const finalPhotos = [
 
+    "assets/images/memories/1.png",
+    "assets/images/memories/2.png",
+    "assets/images/memories/3.png",
+    "assets/images/memories/5.png",
+    "assets/images/memories/19.png",
+    "assets/images/memories/9.png",
+    "assets/images/memories/13.png",
+    "assets/images/memories/16.png",
+    "assets/images/memories/12.png",
+    "assets/images/memories/25.png"
+
+];
+
+
+// =====================================
+// PHOTO TIMER
+// =====================================
+
+let photoTimer = null;
+let photoIndex = 0;
+
+
+// =====================================
+// OPEN FINAL
+// =====================================
+
+function openFinal() {
+
+    if (!finalSection) return;
+
+    // Show final section
     finalSection.classList.add("active");
 
-    // Scroll to top every time
+    // Scroll to top
     finalSection.scrollTop = 0;
-    // Agar browser support kare:
-    // finalSection.scrollTo({ top: 0, behavior: "instant" });
 
+    // Reset everything
     finalText.innerHTML = "";
 
     finalPhotoBox.classList.remove("show");
-
     finalButtons.classList.remove("show");
 
+    photoIndex = 0;
+
+    // Clear previous timer
+    if (photoTimer) {
+        clearTimeout(photoTimer);
+        photoTimer = null;
+    }
+
+    // Start typing
     let index = 0;
 
-    function typeNext(){
+    function typeNext() {
 
-        if(index >= finalLines.length){
+        if (index >= finalLines.length) {
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
                 playFinalPhotos();
 
-            },800);
+            }, 800);
 
             return;
-
         }
 
         const p = document.createElement("p");
@@ -120,62 +136,143 @@ function openFinal(){
 
         finalText.appendChild(p);
 
-        requestAnimationFrame(()=>{
+        requestAnimationFrame(() => {
 
-            p.style.transition = ".8s";
-
+            p.style.transition = "opacity .8s ease";
             p.style.opacity = "1";
 
         });
 
         index++;
 
-        setTimeout(typeNext,1300);
-
+        setTimeout(typeNext, 1300);
     }
 
     typeNext();
+}
+
+
+// =====================================
+// PLAY FINAL PHOTOS
+// =====================================
+
+function playFinalPhotos() {
+
+    if (!finalPhoto || !finalPhotoBox) return;
+
+    // Make sure old timer is gone
+    if (photoTimer) {
+        clearTimeout(photoTimer);
+        photoTimer = null;
+    }
+
+    // Start from first photo
+    photoIndex = 0;
+
+    showFinalPhoto(photoIndex);
 
 }
 
+
 // =====================================
-// Floating Hearts
+// SHOW PHOTO
 // =====================================
 
-setInterval(()=>{
+function showFinalPhoto(index) {
 
-    if(!finalSection.classList.contains("active")) return;
+    if (index >= finalPhotos.length) {
 
-    const heart=document.createElement("div");
+        // All photos completed
+        setTimeout(() => {
 
-    heart.className="final-heart";
+            finalButtons.classList.add("show");
 
-    heart.innerHTML=Math.random()>.5?"❤️":"🤍";
+        }, 1500);
 
-    heart.style.left=Math.random()*100+"%";
+        return;
+    }
 
-    heart.style.bottom="-40px";
+    // Fade out current photo
+    finalPhoto.style.opacity = "0";
+    finalPhoto.style.transform = "scale(1.08)";
 
-    heart.style.animationDuration=
-    (4+Math.random()*3)+"s";
+    setTimeout(() => {
+
+        // Change image ONLY after fade out
+        finalPhoto.src = finalPhotos[index];
+
+        // Fade in new photo
+        requestAnimationFrame(() => {
+
+            finalPhoto.style.opacity = "1";
+            finalPhoto.style.transform = "scale(1)";
+
+        });
+
+        // Show photo container
+        finalPhotoBox.classList.add("show");
+
+        // Wait 3 seconds before next photo
+        photoTimer = setTimeout(() => {
+
+            photoIndex++;
+
+            showFinalPhoto(photoIndex);
+
+        }, 3000);
+
+    }, 600);
+
+}
+
+
+// =====================================
+// FLOATING HEARTS
+// =====================================
+
+setInterval(() => {
+
+    if (!finalSection || !finalSection.classList.contains("active")) {
+        return;
+    }
+
+    const heart = document.createElement("div");
+
+    heart.className = "final-heart";
+
+    heart.innerHTML =
+        Math.random() > 0.5 ? "❤️" : "🤍";
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.bottom = "-40px";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 3) + "s";
 
     finalSection.appendChild(heart);
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         heart.remove();
 
-    },7000);
+    }, 7000);
 
-},700);
+}, 700);
+
 
 // =====================================
-// Replay
+// REPLAY
 // =====================================
 
-if(replayBtn){
+if (replayBtn) {
 
-    replayBtn.addEventListener("click",()=>{
+    replayBtn.addEventListener("click", () => {
+
+        if (photoTimer) {
+            clearTimeout(photoTimer);
+        }
 
         location.reload();
 
@@ -183,152 +280,93 @@ if(replayBtn){
 
 }
 
-// =====================================
-// Save Memory
-// =====================================
 
-// ===============================
+// =====================================
 // MEMORY GALLERY
-// ===============================
+// =====================================
 
-if(galleryBtn){
+if (galleryBtn) {
 
-    galleryBtn.addEventListener("click",()=>{
+    galleryBtn.addEventListener("click", () => {
+
+        if (photoTimer) {
+            clearTimeout(photoTimer);
+            photoTimer = null;
+        }
 
         finalSection.classList.remove("active");
 
-        openMemoryGallery();
+        setTimeout(() => {
+
+            openMemoryGallery();
+
+        }, 300);
 
     });
 
 }
 
+
 // =====================================
-// Exit
+// EXIT
 // =====================================
 
-if(exitBtn){
+if (exitBtn) {
 
-    exitBtn.addEventListener("click",()=>{
+    exitBtn.addEventListener("click", () => {
 
-        finalSection.style.transition="2s";
+        if (photoTimer) {
+            clearTimeout(photoTimer);
+        }
 
-        finalSection.style.opacity="0";
+        finalSection.style.transition = "2s";
+        finalSection.style.opacity = "0";
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
-            document.body.innerHTML=`
+            document.body.innerHTML = `
 
-            <div style="
+                <div style="
+                    min-height:100vh;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    flex-direction:column;
+                    background:#000;
+                    color:white;
+                    font-family:Poppins,sans-serif;
+                    text-align:center;
+                    padding:25px;
+                ">
 
-            height:100vh;
+                    <h1 style="font-size:50px;">
+                        ❤️
+                    </h1>
 
-            display:flex;
+                    <h2>
+                        Thank You For Being
+                        The Best Sister
+                    </h2>
 
-            justify-content:center;
+                    <p style="
+                        margin-top:20px;
+                        opacity:.8;
+                    ">
 
-            align-items:center;
+                        Made With Love
 
-            flex-direction:column;
+                        <br>
 
-            background:#000;
+                        Your Brother 🤍
 
-            color:white;
+                    </p>
 
-            font-family:Poppins;
-
-            text-align:center;
-
-            padding:25px;
-
-            ">
-
-            <h1 style="font-size:50px;">❤️</h1>
-
-            <h2>
-
-            Thank You For Being
-
-            The Best Sister
-
-            </h2>
-
-            <p style="margin-top:20px;opacity:.8;">
-
-            Made With Love
-
-            <br>
-
-            Your Brother 🤍
-
-            </p>
-
-            </div>
+                </div>
 
             `;
 
-        },2000);
+        }, 2000);
 
     });
 
 }
-
-function playFinalPhotos(){
-
-    let i = 0;
-
-    finalPhoto.src = finalPhotos[0];
-
-    finalPhoto.style.opacity = "1";
-    finalPhoto.style.transform = "scale(1)";
-
-    finalPhotoBox.classList.add("show");
-
-    function nextPhoto(){
-
-        i++;
-
-        // Last photo complete
-        if(i >= finalPhotos.length){
-
-            // Last photo ko 2 sec dikhne do
-            setTimeout(()=>{
-
-                finalButtons.classList.add("show");
-
-            },2000);
-
-            return;
-
-        }
-
-        // Fade Out
-        finalPhoto.style.opacity = "0";
-        finalPhoto.style.transform = "scale(1.08)";
-
-        setTimeout(()=>{
-
-            // Change Image
-            finalPhoto.src = finalPhotos[i];
-
-            // Fade In
-            finalPhoto.style.opacity = "1";
-            finalPhoto.style.transform = "scale(1)";
-
-        },600);
-
-        // Next after 3 sec
-        setTimeout(nextPhoto,3000);
-
-    }
-
-    // First image bhi 3 sec dikhe
-    setTimeout(nextPhoto,3000);
-
-}
-
-galleryBtn.addEventListener("click",()=>{
-
-    openMemoryGallery();
-
-});
