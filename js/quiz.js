@@ -1,5 +1,5 @@
 // =====================================
-// BROTHER QUIZ
+// QUIZ SECTION
 // =====================================
 
 const quizSection = document.getElementById("quizSection");
@@ -9,20 +9,36 @@ const quizGame = document.getElementById("quizGame");
 const quizResult = document.getElementById("quizResult");
 
 const startQuizBtn = document.getElementById("startQuizBtn");
-const nextQuestionBtn = document.getElementById("nextQuestionBtn");
-const continueQuizBtn = document.getElementById("continueQuizBtn");
+const nextQuizBtn = document.getElementById("nextQuizBtn");
+const replayQuizBtn = document.getElementById("replayQuizBtn");
+const quizContinueBtn = document.getElementById("quizContinueBtn");
 
-const quizProgress = document.getElementById("quizProgress");
-const quizScore = document.getElementById("quizScore");
+const quizCurrentQuestion =
+    document.getElementById("quizCurrentQuestion");
+
+const quizTotalQuestions =
+    document.getElementById("quizTotalQuestions");
+
+const quizScore =
+    document.getElementById("quizScore");
 
 const quizProgressFill =
     document.getElementById("quizProgressFill");
 
-const questionNumber =
-    document.getElementById("questionNumber");
+const streakCount =
+    document.getElementById("streakCount");
 
-const questionText =
-    document.getElementById("questionText");
+const bestStreak =
+    document.getElementById("bestStreak");
+
+const quizCategory =
+    document.getElementById("quizCategory");
+
+const quizQuestionIcon =
+    document.getElementById("quizQuestionIcon");
+
+const quizQuestion =
+    document.getElementById("quizQuestion");
 
 const quizOptions =
     document.getElementById("quizOptions");
@@ -39,150 +55,256 @@ const quizResultTitle =
 const quizResultMessage =
     document.getElementById("quizResultMessage");
 
+const correctAnswers =
+    document.getElementById("correctAnswers");
+
+const wrongAnswers =
+    document.getElementById("wrongAnswers");
+
 
 // =====================================
-// QUIZ QUESTIONS
+// QUESTIONS
 // =====================================
 
 const quizQuestions = [
 
     {
-        question: "Mere liye aapka sabse important role kya hai? ❤️",
+        category: "😂 Funny Question",
+        icon: "😂",
+
+        question:
+            "Mere baare mein sabse zyada true kya hai?",
 
         options: [
-            "Sirf meri sister",
-            "Meri best friend bhi",
-            "Meri teacher",
-            "Meri enemy 😂"
+            "Main bahut serious hoon 😐",
+            "Main thoda nikamma hoon 😂",
+            "Main kabhi nahi sota 😎",
+            "Main hamesha time par hota hoon 🤡"
         ],
 
-        answer: 1
+        answer: 1,
+
+        correctMessage:
+            "Hahaha! Didi mujhe bahut achhe se jaanti hain 😂❤️",
+
+        wrongMessage:
+            "Didi... itna bhi innocent mat banao mujhe 😂"
     },
 
 
     {
-        question: "Main aapko sabse zyada kis naam se bulata hoon? 😌",
+        category: "❤️ Brother-Sister Bond",
+        icon: "❤️",
+
+        question:
+            "Agar Didi ko kabhi meri zarurat ho, toh main kya karunga?",
 
         options: [
-            "Didi",
-            "Madam",
-            "Aunty 😂",
-            "Boss"
+            "Ignore kar dunga 😴",
+            "Baad mein dekhunga 😂",
+            "Jitna ho sake hamesha saath rahunga ❤️",
+            "Phone silent kar dunga 📵"
         ],
 
-        answer: 0
+        answer: 2,
+
+        correctMessage:
+            "Bilkul! Aapke liye main hamesha available rahunga. 🤍",
+
+        wrongMessage:
+            "Nahi nahi... ye wala answer toh galat hai Didi 😭❤️"
     },
 
 
     {
-        question: "Agar mujhe koi problem ho toh main sabse pehle kya chahta hoon? 🤍",
+        category: "🌸 Personality",
+        icon: "🌸",
+
+        question:
+            "Meri sabse badi problem kya hai?",
 
         options: [
-            "Koi mujhe advice de",
-            "Koi meri baat sune",
-            "Mujhe akela chhod de",
-            "Mujhe khana khila de 😂"
+            "Overthinking 🤯",
+            "Bahut zyada confidence 😎",
+            "Bahut jaldi uthna 🌅",
+            "Har waqt exercise karna 🏃"
         ],
 
-        answer: 1
+        answer: 0,
+
+        correctMessage:
+            "YES! Overthinking meri permanent membership hai 😂🤯",
+
+        wrongMessage:
+            "Didi, meri overthinking ko underestimate kar diya 😭"
     },
 
 
     {
-        question: "Meri sabse badi weakness kya hai? 😂",
+        category: "📸 Memory Question",
+        icon: "📸",
+
+        question:
+            "Humari memories mere liye kya represent karti hain?",
 
         options: [
-            "Overthinking",
-            "Bahut zyada padhna",
-            "Subah jaldi uthna",
-            "Har waqt serious rehna"
+            "Bas random photos 📷",
+            "Time pass 😂",
+            "Meri life ke beautiful moments ❤️",
+            "Kuch bhi nahi 😶"
         ],
 
-        answer: 0
+        answer: 2,
+
+        correctMessage:
+            "Exactly! Har memory mere liye bahut special hai. ❤️📸",
+
+        wrongMessage:
+            "Nahi Didi... ye photos sirf photos nahi hain. 🥹"
     },
 
 
     {
-        question: "Aapke liye meri sabse important feeling kya hai? ❤️",
+        category: "😂 Who Is More Likely?",
+        icon: "🤣",
+
+        question:
+            "Hum dono mein se pehle sorry kaun bolega?",
 
         options: [
-            "Respect",
-            "Pyaar",
-            "Care",
-            "Ye teeno"
+            "Didi 😌",
+            "Main 😭",
+            "Dono ego mein rahenge 😂",
+            "Jo pehle bhooka hoga 🍕"
         ],
 
-        answer: 3
+        answer: 1,
+
+        correctMessage:
+            "Haan bhai... kabhi kabhi main hi maan jaunga 😂❤️",
+
+        wrongMessage:
+            "Achhaaa... Didi ko mujhse zyada confidence hai 😂"
     },
 
 
     {
-        question: "Agar hum dono mein fight ho jaaye toh pehle kaun maanega? 😂",
+        category: "🤍 Emotional",
+        icon: "🤍",
+
+        question:
+            "Mere liye Didi ki sabse important cheez kya hai?",
 
         options: [
-            "Didi",
-            "Bhai",
-            "Dono",
-            "Koi nahi 😭"
+            "Unka phone 📱",
+            "Unka fashion 👗",
+            "Unka khush rehna aur muskurana ❤️",
+            "Unka room 😭"
         ],
 
-        answer: 1
+        answer: 2,
+
+        correctMessage:
+            "Bas isi smile ko hamesha dekhna chahta hoon. 🥹❤️",
+
+        wrongMessage:
+            "Nahi Didi... aapki smile se zyada important kuch nahi. 🤍"
     },
 
 
     {
-        question: "Main aapko lekar sabse zyada kya chahta hoon? 🌸",
+        category: "🎁 Surprise Question",
+        icon: "🎁",
+
+        question:
+            "Agar mujhe Didi ko ek gift dena ho jo kabhi khatam na ho, toh kya dunga?",
 
         options: [
-            "Aap hamesha khush raho",
-            "Aap mujhe gifts do",
-            "Aap mujhe treat do 😂",
-            "Aap mujhe kabhi daanto nahi"
+            "Chocolate 🍫",
+            "Flowers 🌹",
+            "Ek expensive gift 🎁",
+            "Hamesha saath aur support 🤍"
         ],
 
-        answer: 0
+        answer: 3,
+
+        correctMessage:
+            "Exactly! Gift khatam ho sakta hai, support nahi. ❤️",
+
+        wrongMessage:
+            "Chocolate bhi achhi hai... par answer kuch aur tha 😂"
     },
 
 
     {
-        question: "Mere liye hamari memories kitni important hain? 📸",
+        category: "🌈 Future",
+        icon: "🌈",
+
+        question:
+            "Main Didi ke future ke liye sabse zyada kya chahta hoon?",
 
         options: [
-            "Thodi si",
-            "Normal",
-            "Bahut zyada",
-            "Bilkul nahi"
+            "Fame ⭐",
+            "Bahut saara paisa 💰",
+            "Khushi, sukoon aur success ❤️",
+            "Bahut saari shopping 🛍️"
         ],
 
-        answer: 2
+        answer: 2,
+
+        correctMessage:
+            "Yes! Meri sabse badi wish hai ki aap hamesha khush rahein. 🌸",
+
+        wrongMessage:
+            "Paisa important hai... par meri wish usse bhi zyada simple hai. ❤️"
     },
 
 
     {
-        question: "Agar duniya mein sab kuch badal jaaye toh kya nahi badlega? 🤍",
+        category: "🫶 Our Bond",
+        icon: "🫶",
+
+        question:
+            "Waqt badalne ke baad bhi hamare bond ke baare mein kya nahi badlega?",
 
         options: [
-            "Hamari photos",
-            "Hamari memories",
-            "Mera pyaar aur respect",
-            "Mera phone 😂"
+            "Kuch bhi nahi",
+            "Pyaar aur respect ❤️",
+            "Sirf photos 📸",
+            "Bas Rakhi ka din 😂"
         ],
 
-        answer: 2
+        answer: 1,
+
+        correctMessage:
+            "Exactly. Waqt badal sakta hai, bond nahi. 🤍",
+
+        wrongMessage:
+            "Nahi Didi... kuch cheezein waqt ke saath nahi badalti. ❤️"
     },
 
 
     {
-        question: "Last question... Main aapko kitna pyaar karta hoon? ❤️",
+        category: "💖 Final Question",
+        icon: "💖",
+
+        question:
+            "Aapke liye mera sabse honest message kya hai?",
 
         options: [
-            "Thoda",
-            "Bahut",
-            "Bahut zyada",
-            "Iska koi number hi nahi hai ♾️"
+            "Aap bas meri Didi hain.",
+            "Aap meri life ka ek bahut important hissa hain. ❤️",
+            "Aap mujhe bahut irritate karti hain 😂",
+            "Mujhe kuch nahi kehna 😶"
         ],
 
-        answer: 3
+        answer: 1,
+
+        correctMessage:
+            "Aur ye answer hamesha true rahega. ❤️🥹",
+
+        wrongMessage:
+            "Last question mein bhi galat? 😭😂"
     }
 
 ];
@@ -192,9 +314,31 @@ const quizQuestions = [
 // QUIZ VARIABLES
 // =====================================
 
-let currentQuestion = 0;
-let score = 0;
-let answered = false;
+let currentQuizQuestion = 0;
+
+let currentQuizScore = 0;
+
+let currentStreak = 0;
+
+let currentBestStreak = 0;
+
+let totalCorrect = 0;
+
+let totalWrong = 0;
+
+let answerSelected = false;
+
+
+// =====================================
+// TOTAL QUESTIONS
+// =====================================
+
+if (quizTotalQuestions) {
+
+    quizTotalQuestions.textContent =
+        quizQuestions.length;
+
+}
 
 
 // =====================================
@@ -222,176 +366,421 @@ function openQuiz() {
 
 function startQuiz() {
 
-    currentQuestion = 0;
-    score = 0;
-    answered = false;
+    currentQuizQuestion = 0;
+    currentQuizScore = 0;
+
+    currentStreak = 0;
+    currentBestStreak = 0;
+
+    totalCorrect = 0;
+    totalWrong = 0;
+
+    answerSelected = false;
+
+    quizScore.textContent = "0";
+    streakCount.textContent = "0";
 
     quizIntro.style.display = "none";
-    quizGame.style.display = "block";
+
     quizResult.style.display = "none";
 
-    quizScore.textContent = "Score: 0";
+    quizGame.style.display = "block";
 
-    showQuestion();
+    quizSection.scrollTop = 0;
+
+    loadQuizQuestion();
 
 }
 
 
 // =====================================
-// SHOW QUESTION
+// LOAD QUESTION
 // =====================================
 
-function showQuestion() {
+function loadQuizQuestion() {
 
-    answered = false;
+    if (
+        !quizQuestions.length ||
+        currentQuizQuestion >= quizQuestions.length
+    ) {
 
-    quizFeedback.textContent = "";
+        finishQuiz();
 
-    quizFeedback.className = "";
+        return;
 
-    nextQuestionBtn.style.display = "none";
+    }
 
-    const question =
-        quizQuestions[currentQuestion];
+
+    answerSelected = false;
+
+
+    const data =
+        quizQuestions[currentQuizQuestion];
 
 
     // Question number
 
-    questionNumber.textContent =
-        currentQuestion + 1;
+    quizCurrentQuestion.textContent =
+        currentQuizQuestion + 1;
 
 
-    // Header counter
-
-    quizProgress.textContent =
-        `Question ${currentQuestion + 1} / ${quizQuestions.length}`;
-
-
-    // Progress bar
+    // Progress
 
     const progress =
-        ((currentQuestion) /
+        ((currentQuizQuestion) /
         quizQuestions.length) * 100;
+
 
     quizProgressFill.style.width =
         progress + "%";
 
 
+    // Category
+
+    quizCategory.textContent =
+        data.category;
+
+
+    // Icon
+
+    quizQuestionIcon.textContent =
+        data.icon;
+
+
     // Question
 
-    questionText.textContent =
-        question.question;
+    quizQuestion.textContent =
+        data.question;
 
 
     // Clear old options
 
     quizOptions.innerHTML = "";
 
+    quizFeedback.innerHTML = "";
+
+    quizFeedback.className =
+        "quiz-feedback";
+
+
+    // Hide next button
+
+    nextQuizBtn.style.display =
+        "none";
+
 
     // Create options
 
-    question.options.forEach((option, index) => {
+    const shuffledOptions =
+        data.options.map((text, index) => {
+
+            return {
+                text: text,
+                originalIndex: index
+            };
+
+        });
+
+
+    shuffleArray(shuffledOptions);
+
+
+    shuffledOptions.forEach((option) => {
 
         const button =
             document.createElement("button");
 
-        button.className = "quiz-option";
+        button.className =
+            "quiz-option";
+
+
+        button.type = "button";
+
 
         button.innerHTML = `
             <span class="option-letter">
-                ${String.fromCharCode(65 + index)}
+                ${getOptionLetter(option.originalIndex)}
             </span>
 
             <span class="option-text">
-                ${option}
+                ${option.text}
             </span>
         `;
 
+
         button.addEventListener(
             "click",
-            () => checkAnswer(index, button)
+            () => {
+
+                selectQuizAnswer(
+                    option.originalIndex,
+                    button
+                );
+
+            }
         );
+
 
         quizOptions.appendChild(button);
 
     });
 
+
+    // Small entrance animation
+
+    quizQuestion.style.opacity = "0";
+    quizQuestion.style.transform =
+        "translateY(12px)";
+
+
+    setTimeout(() => {
+
+        quizQuestion.style.transition =
+            ".5s ease";
+
+        quizQuestion.style.opacity =
+            "1";
+
+        quizQuestion.style.transform =
+            "translateY(0)";
+
+    }, 50);
+
+
+    // Scroll question into view on mobile
+
+    setTimeout(() => {
+
+        quizQuestion.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 100);
+
 }
 
 
 // =====================================
-// CHECK ANSWER
+// OPTION LETTER
 // =====================================
 
-function checkAnswer(selectedIndex, selectedButton) {
+function getOptionLetter(index) {
 
-    if (answered) return;
+    const letters = [
+        "A",
+        "B",
+        "C",
+        "D"
+    ];
 
-    answered = true;
+    return letters[index] || "•";
+
+}
 
 
-    const question =
-        quizQuestions[currentQuestion];
+// =====================================
+// SELECT ANSWER
+// =====================================
+
+function selectQuizAnswer(
+    selectedIndex,
+    selectedButton
+) {
+
+    if (answerSelected) return;
+
+    answerSelected = true;
 
 
-    const allOptions =
-        document.querySelectorAll(".quiz-option");
+    const data =
+        quizQuestions[currentQuizQuestion];
 
 
-    // Disable all buttons
+    const optionButtons =
+        quizOptions.querySelectorAll(
+            ".quiz-option"
+        );
 
-    allOptions.forEach(button => {
+
+    // Disable all
+
+    optionButtons.forEach(button => {
 
         button.disabled = true;
 
     });
 
 
-    // Correct answer
+    const correct =
+        selectedIndex === data.answer;
 
-    if (selectedIndex === question.answer) {
 
-        score++;
+    // =================================
+    // CORRECT
+    // =================================
 
-        selectedButton.classList.add("correct");
+    if (correct) {
 
-        quizFeedback.innerHTML =
-            "✨ Correct! Didi knows her bhai very well! ❤️";
+        currentQuizScore += 10;
 
-        quizFeedback.className =
-            "correct-feedback";
+        totalCorrect++;
+
+        currentStreak++;
+
+
+        if (
+            currentStreak >
+            currentBestStreak
+        ) {
+
+            currentBestStreak =
+                currentStreak;
+
+        }
+
+
+        quizScore.textContent =
+            currentQuizScore;
+
+
+        streakCount.textContent =
+            currentStreak;
+
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+
+        quizFeedback.innerHTML = `
+            <div class="feedback-icon">
+                ❤️
+            </div>
+
+            <strong>
+                Correct! 🎉
+            </strong>
+
+            <p>
+                ${data.correctMessage}
+            </p>
+
+            <span class="feedback-points">
+                +10 Points
+            </span>
+        `;
+
+
+        quizFeedback.classList.add(
+            "correct-feedback"
+        );
+
+
+        createQuizHearts(
+            selectedButton
+        );
 
     }
 
-    // Wrong answer
+
+    // =================================
+    // WRONG
+    // =================================
 
     else {
 
-        selectedButton.classList.add("wrong");
+        totalWrong++;
 
-        allOptions[
-            question.answer
-        ].classList.add("correct");
+        currentStreak = 0;
 
-        quizFeedback.innerHTML =
-            "😂 Oops! Close one... Correct answer highlighted above ❤️";
+        streakCount.textContent =
+            "0";
 
-        quizFeedback.className =
-            "wrong-feedback";
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        // Highlight correct answer
+
+        optionButtons.forEach(button => {
+
+            const text =
+                button.querySelector(
+                    ".option-text"
+                );
+
+            if (
+                text &&
+                text.textContent.trim() ===
+                data.options[data.answer]
+            ) {
+
+                button.classList.add(
+                    "correct-answer"
+                );
+
+            }
+
+        });
+
+
+        quizFeedback.innerHTML = `
+            <div class="feedback-icon">
+                😂
+            </div>
+
+            <strong>
+                Oops! 😭
+            </strong>
+
+            <p>
+                ${data.wrongMessage}
+            </p>
+
+            <span class="feedback-answer">
+                Correct Answer:
+                ${data.options[data.answer]}
+            </span>
+        `;
+
+
+        quizFeedback.classList.add(
+            "wrong-feedback"
+        );
 
     }
 
 
-    // Update score
+    // =================================
+    // LAST QUESTION
+    // =================================
 
-    quizScore.textContent =
-        `Score: ${score}`;
+    if (
+        currentQuizQuestion >=
+        quizQuestions.length - 1
+    ) {
+
+        nextQuizBtn.textContent =
+            "See My Result 🏆";
+
+    }
 
 
-    // Show next button
-
-    nextQuestionBtn.style.display =
+    nextQuizBtn.style.display =
         "inline-flex";
+
+
+    setTimeout(() => {
+
+        nextQuizBtn.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
+    }, 200);
 
 }
 
@@ -400,12 +789,16 @@ function checkAnswer(selectedIndex, selectedButton) {
 // NEXT QUESTION
 // =====================================
 
-function nextQuestion() {
+function nextQuizQuestion() {
 
-    currentQuestion++;
+    if (!answerSelected) return;
+
+
+    currentQuizQuestion++;
+
 
     if (
-        currentQuestion >=
+        currentQuizQuestion >=
         quizQuestions.length
     ) {
 
@@ -415,7 +808,8 @@ function nextQuestion() {
 
     }
 
-    showQuestion();
+
+    loadQuizQuestion();
 
 }
 
@@ -426,58 +820,323 @@ function nextQuestion() {
 
 function finishQuiz() {
 
-    quizGame.style.display = "none";
+    quizGame.style.display =
+        "none";
 
-    quizResult.style.display = "block";
-
-    quizProgressFill.style.width = "100%";
+    quizResult.style.display =
+        "block";
 
 
     // Final score
 
     finalQuizScore.textContent =
-        score;
+        currentQuizScore;
 
 
-    // Result message
+    correctAnswers.textContent =
+        totalCorrect;
 
-    if (score === 10) {
 
-        quizResultTitle.textContent =
-            "Perfect Score! 🥹❤️";
+    wrongAnswers.textContent =
+        totalWrong;
 
-        quizResultMessage.textContent =
-            "10/10! Didi, aap toh apne bhai ko usse bhi zyada jaanti hain jitna woh khud ko jaanta hai. 😂❤️";
+
+    bestStreak.textContent =
+        currentBestStreak;
+
+
+    // Progress complete
+
+    quizProgressFill.style.width =
+        "100%";
+
+
+    // Result title/message
+
+    const result =
+        getQuizResult(
+            currentQuizScore
+        );
+
+
+    quizResultTitle.textContent =
+        result.title;
+
+
+    quizResultMessage.textContent =
+        result.message;
+
+
+    // Scroll result to top
+
+    quizSection.scrollTop = 0;
+
+
+    setTimeout(() => {
+
+        quizResult.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 100);
+
+
+    // Confetti/hearts
+
+    createResultCelebration();
+
+}
+
+
+// =====================================
+// RESULT MESSAGES
+// =====================================
+
+function getQuizResult(score) {
+
+
+    if (score === 100) {
+
+        return {
+
+            title:
+                "🏆 World's Best Sister ❤️",
+
+            message:
+                "100/100! 😭❤️ Aap toh mujhe mujhse bhi zyada jaanti hain. Officially, aap World's Best Didi hain!"
+
+        };
 
     }
 
-    else if (score >= 8) {
 
-        quizResultTitle.textContent =
-            "Amazing! ❤️";
+    if (score >= 80) {
 
-        quizResultMessage.textContent =
-            "Aapko apne nikamme bhai ke baare mein kaafi kuch pata hai. Clearly, bond strong hai! 🤍";
+        return {
 
-    }
+            title:
+                "👑 Perfect Didi Material ❤️",
 
-    else if (score >= 5) {
+            message:
+                "Bahut khoob Didi! Aap mujhe bahut achhe se jaanti hain. Bas kuch answers mein thoda aur practice chahiye. 😂❤️"
 
-        quizResultTitle.textContent =
-            "Not Bad! 😂";
-
-        quizResultMessage.textContent =
-            "Thoda aur time mere saath spend karna padega Didi... phir 10/10 pakka! ❤️";
+        };
 
     }
 
-    else {
 
-        quizResultTitle.textContent =
-            "Arre Didi! 😭😂";
+    if (score >= 60) {
 
-        quizResultMessage.textContent =
-            "Lagta hai bhai ke baare mein thoda revision karna padega. Lekin koi baat nahi... pyaar mein marks nahi dekhe jaate. ❤️";
+        return {
+
+            title:
+                "🌸 Amazing Sister ❤️",
+
+            message:
+                "Aapne kaafi achha kiya! Kuch answers galat hue, lekin hamara bond kisi score ka mohtaj nahi hai. 🤍"
+
+        };
+
+    }
+
+
+    if (score >= 40) {
+
+        return {
+
+            title:
+                "😂 Thodi Aur Practice",
+
+            message:
+                "Didi... lagta hai mujhe aapko aur zyada tang karna padega taaki aap mujhe aur achhe se jaan sakein. 😂❤️"
+
+        };
+
+    }
+
+
+    return {
+
+        title:
+            "🥹 Still The Best Didi",
+
+        message:
+            "Score thoda kam ho sakta hai... lekin mere liye aapki jagah kabhi kam nahi ho sakti. ❤️"
+
+    };
+
+}
+
+
+// =====================================
+// SHUFFLE ARRAY
+// =====================================
+
+function shuffleArray(array) {
+
+    for (
+        let i = array.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            array[i],
+            array[j]
+        ] =
+        [
+            array[j],
+            array[i]
+        ];
+
+    }
+
+
+    return array;
+
+}
+
+
+// =====================================
+// HEART PARTICLES
+// =====================================
+
+function createQuizHearts(target) {
+
+    if (!quizGame) return;
+
+
+    const rect =
+        target.getBoundingClientRect();
+
+
+    for (
+        let i = 0;
+        i < 7;
+        i++
+    ) {
+
+        const heart =
+            document.createElement("span");
+
+
+        heart.className =
+            "quiz-floating-heart";
+
+
+        heart.textContent =
+            Math.random() > .4
+                ? "❤️"
+                : "✨";
+
+
+        heart.style.left =
+            (
+                rect.left +
+                rect.width / 2 +
+                (Math.random() * 80 - 40)
+            ) + "px";
+
+
+        heart.style.top =
+            (
+                rect.top +
+                window.scrollY +
+                20
+            ) + "px";
+
+
+        heart.style.animationDelay =
+            (Math.random() * .3) + "s";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        }, 1600);
+
+    }
+
+}
+
+
+// =====================================
+// RESULT CELEBRATION
+// =====================================
+
+function createResultCelebration() {
+
+    const emojis = [
+        "❤️",
+        "✨",
+        "🌸",
+        "💖",
+        "⭐",
+        "🤍"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 20;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("div");
+
+
+        particle.className =
+            "quiz-result-particle";
+
+
+        particle.textContent =
+            emojis[
+                Math.floor(
+                    Math.random() *
+                    emojis.length
+                )
+            ];
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        particle.style.animationDuration =
+            (
+                3 +
+                Math.random() * 3
+            ) + "s";
+
+
+        quizResult.appendChild(
+            particle
+        );
+
+
+        setTimeout(() => {
+
+            particle.remove();
+
+        }, 6500);
 
     }
 
@@ -502,11 +1161,41 @@ if (startQuizBtn) {
 // NEXT BUTTON
 // =====================================
 
-if (nextQuestionBtn) {
+if (nextQuizBtn) {
 
-    nextQuestionBtn.addEventListener(
+    nextQuizBtn.addEventListener(
         "click",
-        nextQuestion
+        nextQuizQuestion
+    );
+
+}
+
+
+// =====================================
+// REPLAY QUIZ
+// =====================================
+
+if (replayQuizBtn) {
+
+    replayQuizBtn.addEventListener(
+        "click",
+        () => {
+
+            // Remove old particles
+
+            quizResult
+                .querySelectorAll(
+                    ".quiz-result-particle"
+                )
+                .forEach(
+                    particle =>
+                        particle.remove()
+                );
+
+
+            startQuiz();
+
+        }
     );
 
 }
@@ -516,9 +1205,9 @@ if (nextQuestionBtn) {
 // CONTINUE TO AWARD
 // =====================================
 
-if (continueQuizBtn) {
+if (quizContinueBtn) {
 
-    continueQuizBtn.addEventListener(
+    quizContinueBtn.addEventListener(
         "click",
         () => {
 
@@ -526,21 +1215,25 @@ if (continueQuizBtn) {
                 "active"
             );
 
+
             setTimeout(() => {
 
-                if (typeof openAward === "function") {
+                if (
+                    typeof openAward ===
+                    "function"
+                ) {
 
                     openAward();
 
                 } else {
 
-                    console.error(
+                    console.warn(
                         "openAward() function not found."
                     );
 
                 }
 
-            }, 700);
+            }, 500);
 
         }
     );
@@ -549,11 +1242,37 @@ if (continueQuizBtn) {
 
 
 // =====================================
+// OPTIONAL:
+// Allow openQuiz() from another section
+// =====================================
+
+window.openQuiz = openQuiz;
+
+
+// =====================================
 // INITIAL STATE
 // =====================================
 
 if (quizSection) {
 
-    quizSection.classList.remove("active");
+    quizSection.classList.remove(
+        "active"
+    );
+
+}
+
+
+if (quizGame) {
+
+    quizGame.style.display =
+        "none";
+
+}
+
+
+if (quizResult) {
+
+    quizResult.style.display =
+        "none";
 
 }

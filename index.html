@@ -270,143 +270,368 @@ main hamesha aapke saath khada rahunga.</p>
     </section>
 
     <!-- =====================================
-            BROTHER QUIZ
+                QUIZ SECTION
     ===================================== -->
 
     <section id="quizSection">
 
-        <div class="quiz-card">
+        <div class="quiz-bg"></div>
 
-            <!-- Intro -->
-            <div id="quizIntro">
+        <!-- ================= QUIZ INTRO ================= -->
 
-                <div class="quiz-icon">
-                    🧠
+        <div class="quiz-card" id="quizIntro">
+
+            <div class="quiz-icon">
+                🧠
+            </div>
+
+            <span class="small-title">
+                ✨ A Little Challenge ✨
+            </span>
+
+            <h1>
+                How Well Do You Know Me? ❤️
+            </h1>
+
+            <p class="quiz-intro-text">
+                Didi, ab dekhte hain ki aap apne
+                nikamme bhai ko kitna jaanti hain. 😂❤️
+            </p>
+
+            <div class="quiz-rules">
+
+                <div class="quiz-rule">
+                    ❤️ <span>10 Questions</span>
                 </div>
 
-                <span class="small-title">
-                    ✨ A Little Challenge ✨
-                </span>
+                <div class="quiz-rule">
+                    ⭐ <span>10 Points Each</span>
+                </div>
 
-                <h1>
-                    How Well Do You Know Your Brother?
-                </h1>
+                <div class="quiz-rule">
+                    🔥 <span>Build Your Streak</span>
+                </div>
 
-                <p>
-                    Didi, itna time saath rehne ke baad
-                    toh aapko apne nikamme bhai ke baare mein
-                    sab kuch pata hi hoga... 😂❤️
-                </p>
-
-                <p class="quiz-subtitle">
-                    Let's find out! 👀
-                </p>
-
-                <button id="startQuizBtn">
-                    Start Quiz ❤️
-                </button>
+                <div class="quiz-rule">
+                    🏆 <span>Unlock Your Title</span>
+                </div>
 
             </div>
 
+            <div class="quiz-warning">
 
-            <!-- Quiz -->
-            <div id="quizGame">
+                😏
+                <span>
+                    Dekhte hain Didi mujhe kitna jaanti hain...
+                </span>
 
-                <div class="quiz-header">
+            </div>
 
-                    <span id="quizProgress">
-                        Question 1 / 10
+            <button id="startQuizBtn" class="quiz-btn">
+
+                Start Quiz ❤️
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= QUIZ GAME ================= -->
+
+        <div class="quiz-card quiz-game" id="quizGame">
+
+            <!-- Header -->
+
+            <div class="quiz-header">
+
+                <div class="quiz-question-number">
+
+                    Question
+
+                    <span id="quizCurrentQuestion">
+                        1
                     </span>
+
+                    /
+
+                    <span id="quizTotalQuestions">
+                        10
+                    </span>
+
+                </div>
+
+                <div class="quiz-score">
+
+                    ⭐
 
                     <span id="quizScore">
-                        Score: 0
-                    </span>
-
-                </div>
-
-
-                <div class="quiz-progress-bar">
-
-                    <div id="quizProgressFill"></div>
-
-                </div>
-
-
-                <div class="question-number">
-                    Question <span id="questionNumber">1</span>
-                </div>
-
-
-                <h2 id="questionText">
-                    Question goes here...
-                </h2>
-
-
-                <div id="quizOptions">
-
-                    <!-- JS will create options -->
-
-                </div>
-
-
-                <div id="quizFeedback">
-
-                </div>
-
-
-                <button id="nextQuestionBtn">
-                    Next ❤️
-                </button>
-
-            </div>
-
-
-            <!-- Result -->
-            <div id="quizResult">
-
-                <div class="result-icon">
-                    🏆
-                </div>
-
-                <span class="small-title">
-                    ✨ Quiz Complete ✨
-                </span>
-
-                <h1>
-                    You Know Me...
-                </h1>
-
-                <div class="score-circle">
-
-                    <span id="finalQuizScore">
                         0
                     </span>
 
+                </div>
+
+            </div>
+
+
+            <!-- Progress -->
+
+            <div class="quiz-progress">
+
+                <div
+                    id="quizProgressFill"
+                    class="quiz-progress-fill">
+                </div>
+
+            </div>
+
+
+            <!-- Streak -->
+
+            <div class="quiz-streak" id="quizStreak">
+
+                🔥 Streak:
+
+                <span id="streakCount">
+                    0
+                </span>
+
+            </div>
+
+
+            <!-- Category -->
+
+            <div
+                class="quiz-category"
+                id="quizCategory">
+
+                ❤️ About Us
+
+            </div>
+
+
+            <!-- Question -->
+
+            <div class="quiz-question-box">
+
+                <div
+                    class="quiz-question-icon"
+                    id="quizQuestionIcon">
+
+                    ❤️
+
+                </div>
+
+                <h2 id="quizQuestion">
+
+                    Question will appear here...
+
+                </h2>
+
+            </div>
+
+
+            <!-- Options -->
+
+            <div
+                class="quiz-options"
+                id="quizOptions">
+
+                <!-- JS will create options -->
+
+            </div>
+
+
+            <!-- Answer Feedback -->
+
+            <div
+                class="quiz-feedback"
+                id="quizFeedback">
+
+            </div>
+
+
+            <!-- Next -->
+
+            <button
+                id="nextQuizBtn"
+                class="quiz-btn quiz-next-btn">
+
+                Next Question ❤️
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= QUIZ RESULT ================= -->
+
+        <div
+            class="quiz-card quiz-result"
+            id="quizResult">
+
+            <div class="result-animation">
+
+                🏆
+
+            </div>
+
+            <span class="small-title">
+
+                ✨ Quiz Complete ✨
+
+            </span>
+
+            <h1>
+                You Did It! ❤️
+            </h1>
+
+
+            <!-- Score -->
+
+            <div class="final-score-circle">
+
+                <span id="finalQuizScore">
+                    0
+                </span>
+
+                <small>
+                    / 100
+                </small>
+
+            </div>
+
+
+            <!-- Result Title -->
+
+            <div
+                class="quiz-result-title"
+                id="quizResultTitle">
+
+                World's Best Sister ❤️
+
+            </div>
+
+
+            <!-- Result Message -->
+
+            <p
+                class="quiz-result-message"
+                id="quizResultMessage">
+
+                Your result will appear here...
+
+            </p>
+
+
+            <!-- Stats -->
+
+            <div class="quiz-stats">
+
+                <div class="quiz-stat">
+
+                    <span class="stat-icon">
+                        ✅
+                    </span>
+
+                    <strong id="correctAnswers">
+                        0
+                    </strong>
+
                     <small>
-                        / 10
+                        Correct
                     </small>
 
                 </div>
 
-                <h2 id="quizResultTitle">
-                    Amazing! ❤️
-                </h2>
 
-                <p id="quizResultMessage">
-                    Result message...
-                </p>
+                <div class="quiz-stat">
 
+                    <span class="stat-icon">
+                        ❌
+                    </span>
 
-                <div class="quiz-result-line">
-                    ❤️
+                    <strong id="wrongAnswers">
+                        0
+                    </strong>
+
+                    <small>
+                        Wrong
+                    </small>
+
                 </div>
 
 
-                <button id="continueQuizBtn">
-                    Continue To Your Award 🏆
-                </button>
+                <div class="quiz-stat">
+
+                    <span class="stat-icon">
+                        🔥
+                    </span>
+
+                    <strong id="bestStreak">
+                        0
+                    </strong>
+
+                    <small>
+                        Best Streak
+                    </small>
+
+                </div>
 
             </div>
+
+
+            <!-- Emotional Message -->
+
+            <div class="quiz-emotional-message">
+
+                <div class="emotional-heart">
+                    ❤️
+                </div>
+
+                <p>
+
+                    Score chahe jo bhi ho...
+
+                    <br><br>
+
+                    <strong>
+                        Mere liye aap hamesha
+                        World's Best Didi rahengi.
+                    </strong>
+
+                    <br><br>
+
+                    Kyunki aapko mujhe
+                    kitna jaanna hai,
+                    usse zyada important hai
+                    ki aap meri life mein kitni
+                    important hain. 🤍
+
+                </p>
+
+            </div>
+
+
+            <!-- Replay -->
+
+            <button
+                id="replayQuizBtn"
+                class="quiz-btn">
+
+                🔄 Play Again
+
+            </button>
+
+
+            <!-- Continue -->
+
+            <button
+                id="quizContinueBtn"
+                class="quiz-btn quiz-final-btn">
+
+                Continue To Award 🏆
+
+            </button>
 
         </div>
 
