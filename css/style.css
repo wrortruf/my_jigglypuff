@@ -3158,214 +3158,214 @@ a:focus-visible, [tabindex]:focus-visible{
 }
 
 /* =====================================
-        SECRET REVEAL
+   SECRET REVEAL
 ===================================== */
 
-#secretSection{
+#secretSection {
+    position: fixed;
+    inset: 0;
 
-    position:fixed;
-    inset:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    box-sizing: border-box;
 
-    padding:30px 20px;
+    padding: 30px 20px;
 
-    overflow-y:auto;
-    overflow-x:hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
     transition:
         opacity .8s ease,
         visibility .8s ease;
 
-    z-index:49;
+    z-index: 49;
 
-    -webkit-overflow-scrolling:touch;
-
-    box-sizing:border-box;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
-#secretSection.active{
-
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-}
-
-
-/* =====================================
-        BACKGROUND
-===================================== */
-
-.secret-bg{
-
-    position:absolute;
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-}
-
-.secret-glow{
-
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    border-radius:50%;
-
-    filter:blur(70px);
-
-    opacity:.45;
-}
-
-.glow-one{
-
-    background:#ff9fc4;
-
-    top:-100px;
-    left:-100px;
-}
-
-.glow-two{
-
-    background:#c79cff;
-
-    bottom:-120px;
-    right:-100px;
+#secretSection.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 
 /* =====================================
-        CARD
+   BACKGROUND
 ===================================== */
 
-.secret-card{
+.secret-bg {
+    position: absolute;
+    inset: 0;
 
-    width:min(92%,650px);
+    overflow: hidden;
 
-    max-height:88dvh;
+    pointer-events: none;
 
-    overflow-y:auto;
+    z-index: 0;
+}
 
-    padding:42px 32px;
+.secret-glow {
+    position: absolute;
 
-    border-radius:30px;
+    width: 300px;
+    height: 300px;
 
-    background:rgba(255,255,255,.48);
+    border-radius: 50%;
 
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
+    filter: blur(70px);
 
-    border:1px solid rgba(255,255,255,.7);
+    opacity: .45;
+}
+
+.glow-one {
+    background: #ff9fc4;
+
+    top: -100px;
+    left: -100px;
+}
+
+.glow-two {
+    background: #c79cff;
+
+    right: -100px;
+    bottom: -120px;
+}
+
+
+/* =====================================
+   SECRET CARD
+===================================== */
+
+.secret-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(92%, 650px);
+
+    /*
+       IMPORTANT:
+       Don't use fixed height.
+    */
+    max-height: calc(100dvh - 60px);
+
+    box-sizing: border-box;
+
+    padding: 42px 32px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, .48);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255, 255, 255, .7);
 
     box-shadow:
-        0 25px 70px rgba(100,40,80,.18),
-        inset 0 1px 0 rgba(255,255,255,.8);
+        0 25px 70px rgba(100, 40, 80, .18),
+        inset 0 1px 0 rgba(255, 255, 255, .8);
 
-    text-align:center;
+    text-align: center;
 
-    position:relative;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    z-index:2;
+    -webkit-overflow-scrolling: touch;
 
-    box-sizing:border-box;
+    overscroll-behavior: contain;
 
-    animation:secretCardIn .8s ease;
-
-    -webkit-overflow-scrolling:touch;
-}
-
-
-/* scrollbar */
-
-.secret-card::-webkit-scrollbar{
-
-    width:5px;
-}
-
-.secret-card::-webkit-scrollbar-track{
-
-    background:transparent;
-}
-
-.secret-card::-webkit-scrollbar-thumb{
-
-    background:rgba(200,80,130,.35);
-
-    border-radius:20px;
+    animation: secretCardIn .8s ease;
 }
 
 
 /* =====================================
-        INTRO
+   SCROLLBAR
 ===================================== */
 
-#secretIntro{
-
-    width:100%;
+.secret-card::-webkit-scrollbar {
+    width: 5px;
 }
 
-.secret-icon{
-
-    font-size:65px;
-
-    margin-bottom:15px;
-
-    animation:secretFloat 3s ease-in-out infinite;
+.secret-card::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-#secretIntro h1{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(30px,5vw,44px);
-
-    color:#8f3158;
-
-    margin:15px 0;
-}
-
-#secretIntro p{
-
-    color:#684b58;
-
-    line-height:1.8;
-
-    max-width:500px;
-
-    margin:10px auto;
-}
-
-.secret-hint{
-
-    color:#b84d78 !important;
-
-    font-weight:600;
+.secret-card::-webkit-scrollbar-thumb {
+    background: rgba(200, 80, 130, .35);
+    border-radius: 20px;
 }
 
 
 /* =====================================
-        BUTTON
+   INTRO
+===================================== */
+
+#secretIntro {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.secret-icon {
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation:
+        secretFloat 3s ease-in-out infinite;
+}
+
+#secretIntro h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(30px, 5vw, 44px);
+
+    line-height: 1.2;
+
+    color: #8f3158;
+
+    margin: 15px 0;
+}
+
+#secretIntro p {
+    color: #684b58;
+
+    line-height: 1.8;
+
+    max-width: 500px;
+
+    margin: 10px auto;
+
+    overflow-wrap: break-word;
+}
+
+.secret-hint {
+    color: #b84d78 !important;
+
+    font-weight: 600;
+}
+
+
+/* =====================================
+   BUTTONS
 ===================================== */
 
 #unlockSecretBtn,
-#secretContinueBtn{
+#secretContinueBtn {
+    border: none;
 
-    border:none;
+    padding: 14px 26px;
 
-    padding:14px 26px;
+    margin-top: 20px;
 
-    margin-top:20px;
-
-    border-radius:999px;
+    border-radius: 999px;
 
     background:
         linear-gradient(
@@ -3374,309 +3374,331 @@ a:focus-visible, [tabindex]:focus-visible{
             #d85b91
         );
 
-    color:white;
+    color: white;
 
-    font-family:Poppins,sans-serif;
+    font-family: Poppins, sans-serif;
 
-    font-size:14px;
+    font-size: 14px;
 
-    font-weight:600;
+    font-weight: 600;
 
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
-        0 10px 25px rgba(216,91,145,.28);
+        0 10px 25px rgba(216, 91, 145, .28);
 
     transition:
         transform .25s ease,
         box-shadow .25s ease,
         opacity .3s ease;
+
+    max-width: 100%;
 }
 
 #unlockSecretBtn:hover,
-#secretContinueBtn:hover{
-
-    transform:translateY(-3px);
+#secretContinueBtn:hover {
+    transform: translateY(-3px);
 
     box-shadow:
-        0 15px 30px rgba(216,91,145,.38);
+        0 15px 30px rgba(216, 91, 145, .38);
 }
 
 #unlockSecretBtn:active,
-#secretContinueBtn:active{
-
-    transform:scale(.96);
+#secretContinueBtn:active {
+    transform: scale(.96);
 }
 
 
 /* =====================================
-        HIDDEN SCREENS
+   HIDDEN SCREENS
 ===================================== */
 
-.secret-screen{
+.secret-screen {
+    display: none;
 
-    display:none;
+    width: 100%;
 
-    animation:secretFade .7s ease;
+    box-sizing: border-box;
+
+    animation: secretFade .7s ease;
 }
 
-.secret-screen.active{
-
-    display:block;
+.secret-screen.active {
+    display: block;
 }
 
 
 /* =====================================
-        LOCK
+   LOCK
 ===================================== */
 
-.lock-animation{
+.lock-animation {
+    font-size: 65px;
 
-    font-size:65px;
+    margin-bottom: 15px;
 
-    margin-bottom:15px;
-
-    animation:lockShake 2s ease-in-out infinite;
+    animation:
+        lockShake 2s ease-in-out infinite;
 }
 
-#secretLock h2{
+#secretLock h2 {
+    font-family: "Playfair Display", serif;
 
-    font-family:"Playfair Display",serif;
+    color: #8f3158;
 
-    color:#8f3158;
+    margin-bottom: 10px;
 
-    margin-bottom:10px;
+    line-height: 1.3;
 }
 
-#secretLock > p{
+#secretLock > p {
+    color: #684b58;
 
-    color:#684b58;
+    margin-bottom: 20px;
 
-    margin-bottom:20px;
+    line-height: 1.7;
 }
 
 
 /* =====================================
-        QUESTION
+   QUESTION
 ===================================== */
 
-.secret-question{
+.secret-question {
+    box-sizing: border-box;
 
-    padding:18px;
+    padding: 18px;
 
-    margin:20px 0;
+    margin: 20px 0;
 
-    border-radius:18px;
+    border-radius: 18px;
 
-    background:rgba(255,255,255,.55);
+    background: rgba(255, 255, 255, .55);
 
-    border:1px solid rgba(200,100,140,.15);
+    border: 1px solid rgba(200, 100, 140, .15);
 
-    color:#70344e;
+    color: #70344e;
 
-    font-weight:600;
+    font-weight: 600;
 
-    line-height:1.6;
+    line-height: 1.6;
+
+    overflow-wrap: break-word;
 }
 
 
 /* =====================================
-        OPTIONS
+   OPTIONS
 ===================================== */
 
-.secret-options{
-
-    display:grid;
+.secret-options {
+    display: grid;
 
     grid-template-columns:
-        repeat(2,minmax(0,1fr));
+        repeat(2, minmax(0, 1fr));
 
-    gap:12px;
+    gap: 12px;
 
-    margin-top:15px;
+    margin-top: 15px;
+
+    width: 100%;
 }
 
-.secret-option{
+.secret-option {
+    width: 100%;
 
-    padding:14px 12px;
+    min-width: 0;
 
-    border-radius:16px;
+    box-sizing: border-box;
+
+    padding: 14px 12px;
+
+    border-radius: 16px;
 
     border:
         1px solid
-        rgba(190,100,140,.2);
+        rgba(190, 100, 140, .2);
 
-    background:rgba(255,255,255,.55);
+    background:
+        rgba(255, 255, 255, .55);
 
-    color:#674553;
+    color: #674553;
 
-    font-family:Poppins,sans-serif;
+    font-family: Poppins, sans-serif;
 
-    font-size:14px;
+    font-size: 14px;
 
-    cursor:pointer;
+    line-height: 1.45;
+
+    cursor: pointer;
 
     transition:
         transform .25s ease,
         background .25s ease,
         border .25s ease;
+
+    overflow-wrap: break-word;
 }
 
-.secret-option:hover{
+.secret-option:hover {
+    transform: translateY(-2px);
 
-    transform:translateY(-2px);
-
-    background:rgba(255,255,255,.85);
+    background:
+        rgba(255, 255, 255, .85);
 
     border-color:
-        rgba(190,100,140,.45);
+        rgba(190, 100, 140, .45);
 }
 
-.secret-option.correct{
+.secret-option.correct {
+    background:
+        rgba(120, 220, 160, .35);
 
-    background:rgba(120,220,160,.35);
+    border-color:
+        rgba(50, 170, 100, .5);
 
-    border-color:rgba(50,170,100,.5);
-
-    animation:correctPulse .5s ease;
+    animation: correctPulse .5s ease;
 }
 
-.secret-option.wrong{
+.secret-option.wrong {
+    background:
+        rgba(255, 120, 140, .3);
 
-    background:rgba(255,120,140,.3);
+    border-color:
+        rgba(220, 70, 100, .5);
 
-    border-color:rgba(220,70,100,.5);
-
-    animation:wrongShake .45s ease;
-}
-
-
-/* =====================================
-        FEEDBACK
-===================================== */
-
-#secretFeedback{
-
-    min-height:28px;
-
-    margin-top:15px;
-
-    font-weight:600;
-
-    font-size:14px;
-
-    color:#b84d78;
+    animation: wrongShake .45s ease;
 }
 
 
 /* =====================================
-        REVEAL
+   FEEDBACK
 ===================================== */
 
-.reveal-heart{
+#secretFeedback {
+    min-height: 28px;
 
-    font-size:70px;
+    margin-top: 15px;
 
-    margin-bottom:12px;
+    font-weight: 600;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    color: #b84d78;
+}
+
+
+/* =====================================
+   REVEAL
+===================================== */
+
+.reveal-heart {
+    font-size: 70px;
+
+    margin-bottom: 12px;
 
     animation:
         secretHeart 1.5s ease-in-out infinite;
 }
 
-#secretReveal h1{
+#secretReveal h1 {
+    font-family: "Playfair Display", serif;
 
-    font-family:"Playfair Display",serif;
+    font-size: clamp(28px, 5vw, 40px);
 
-    font-size:clamp(28px,5vw,40px);
+    line-height: 1.2;
 
-    color:#8f3158;
+    color: #8f3158;
 
-    margin:15px 0 25px;
+    margin: 15px 0 25px;
 }
 
 
 /* =====================================
-        MESSAGE
+   MESSAGE
 ===================================== */
 
-.secret-message{
+.secret-message {
+    color: #684b58;
 
-    color:#684b58;
+    line-height: 1.9;
 
-    line-height:1.9;
+    font-size: 15px;
 
-    font-size:15px;
+    overflow-wrap: break-word;
 }
 
-.secret-message p{
-
-    margin:0 0 18px;
+.secret-message p {
+    margin: 0 0 18px;
 }
 
-.secret-highlight{
+.secret-highlight {
+    color: #9b3d65;
 
-    color:#9b3d65;
+    font-size: 18px;
 
-    font-size:18px;
-
-    font-weight:700;
+    font-weight: 700;
 }
 
-.secret-quote{
+.secret-quote {
+    margin: 25px 0;
 
-    margin:25px 0;
-
-    padding:20px;
+    padding: 20px;
 
     border-left:
         4px solid #d85b91;
 
-    border-radius:0 16px 16px 0;
+    border-radius:
+        0 16px 16px 0;
 
-    background:rgba(255,255,255,.5);
+    background:
+        rgba(255, 255, 255, .5);
 
-    color:#8f3158;
+    color: #8f3158;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display", serif;
 
-    font-size:17px;
+    font-size: 17px;
 
-    font-style:italic;
+    font-style: italic;
+
+    line-height: 1.7;
+
+    box-sizing: border-box;
 }
 
-.secret-final{
-
-    font-weight:600;
+.secret-final {
+    font-weight: 600;
 }
 
-.secret-sign{
+.secret-sign {
+    color: #9b3d65;
 
-    color:#9b3d65;
+    font-weight: 700;
 
-    font-weight:700;
-
-    margin-top:25px !important;
+    margin-top: 25px !important;
 }
 
 
 /* =====================================
-        ANIMATIONS
+   ANIMATIONS
 ===================================== */
 
-@keyframes secretCardIn{
+@keyframes secretCardIn {
 
-    from{
-
-        opacity:0;
+    from {
+        opacity: 0;
 
         transform:
             translateY(35px)
             scale(.97);
     }
 
-    to{
-
-        opacity:1;
+    to {
+        opacity: 1;
 
         transform:
             translateY(0)
@@ -3684,172 +3706,328 @@ a:focus-visible, [tabindex]:focus-visible{
     }
 }
 
-@keyframes secretFade{
+@keyframes secretFade {
 
-    from{
+    from {
+        opacity: 0;
 
-        opacity:0;
-
-        transform:translateY(15px);
+        transform:
+            translateY(15px);
     }
 
-    to{
+    to {
+        opacity: 1;
 
-        opacity:1;
-
-        transform:translateY(0);
-    }
-}
-
-@keyframes secretFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-9px);
+        transform:
+            translateY(0);
     }
 }
 
-@keyframes lockShake{
+@keyframes secretFloat {
 
-    0%,100%{
-        transform:rotate(0);
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
-    20%{
-        transform:rotate(-5deg);
-    }
-
-    40%{
-        transform:rotate(5deg);
-    }
-
-    60%{
-        transform:rotate(-4deg);
-    }
-
-    80%{
-        transform:rotate(4deg);
+    50% {
+        transform: translateY(-9px);
     }
 }
 
-@keyframes secretHeart{
+@keyframes lockShake {
 
-    0%,100%{
-        transform:scale(1);
+    0%,
+    100% {
+        transform: rotate(0);
     }
 
-    50%{
-        transform:scale(1.12);
+    20% {
+        transform: rotate(-5deg);
+    }
+
+    40% {
+        transform: rotate(5deg);
+    }
+
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    80% {
+        transform: rotate(4deg);
     }
 }
 
-@keyframes correctPulse{
+@keyframes secretHeart {
 
-    50%{
-        transform:scale(1.05);
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
     }
 }
 
-@keyframes wrongShake{
+@keyframes correctPulse {
 
-    25%{
-        transform:translateX(-6px);
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes wrongShake {
+
+    25% {
+        transform: translateX(-6px);
     }
 
-    50%{
-        transform:translateX(6px);
+    50% {
+        transform: translateX(6px);
     }
 
-    75%{
-        transform:translateX(-4px);
+    75% {
+        transform: translateX(-4px);
     }
 }
 
 
 /* =====================================
-        MOBILE
+   MOBILE FIX
 ===================================== */
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
-    #secretSection{
-
-        padding:
-            max(18px,env(safe-area-inset-top))
-            12px
-            max(20px,env(safe-area-inset-bottom));
-
-        align-items:flex-start;
-    }
-
-    .secret-card{
-
-        width:100%;
-
-        max-height:
-            calc(100dvh - 30px);
+    #secretSection {
+        display: block;
 
         padding:
-            30px 17px;
+            max(15px, env(safe-area-inset-top))
+            10px
+            max(20px, env(safe-area-inset-bottom));
 
-        border-radius:23px;
+        overflow-y: auto;
+
+        box-sizing: border-box;
     }
 
-    .secret-icon{
-
-        font-size:50px;
+    #secretSection.active {
+        display: block;
     }
 
-    #secretIntro h1{
+    .secret-card {
 
-        font-size:29px;
+        width: 100%;
+
+        /*
+           Card ko screen se bahar mat jaane do
+        */
+        max-height: none;
+
+        min-height: 0;
+
+        margin:
+            10px auto
+            20px;
+
+        padding:
+            28px 16px;
+
+        border-radius: 22px;
+
+        overflow: visible;
+
+        box-sizing: border-box;
     }
 
-    #secretIntro p{
 
-        font-size:14px;
+    /* Intro */
 
-        line-height:1.75;
+    .secret-icon {
+        font-size: 48px;
+
+        margin-bottom: 10px;
     }
 
-    .secret-options{
+    #secretIntro h1 {
+        font-size: 27px;
 
-        grid-template-columns:1fr;
+        line-height: 1.25;
 
-        gap:10px;
+        margin: 12px 0;
     }
 
-    .secret-option{
+    #secretIntro p {
+        font-size: 14px;
 
-        padding:14px 12px;
-
-        font-size:13px;
+        line-height: 1.75;
     }
 
-    .secret-message{
 
-        font-size:14px;
+    /* Lock */
 
-        line-height:1.8;
+    .lock-animation {
+        font-size: 52px;
+
+        margin-bottom: 10px;
     }
 
-    .secret-highlight{
+    #secretLock h2 {
+        font-size: 22px;
 
-        font-size:16px;
+        line-height: 1.3;
     }
 
-    .secret-quote{
+    #secretLock > p {
+        font-size: 14px;
 
-        font-size:15px;
-
-        padding:16px;
+        line-height: 1.7;
     }
 
-    .reveal-heart{
 
-        font-size:55px;
+    /* Question */
+
+    .secret-question {
+        padding: 14px;
+
+        margin:
+            16px 0;
+
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+
+    /* Options */
+
+    .secret-options {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+
+        margin-top: 12px;
+    }
+
+    .secret-option {
+        padding:
+            13px 12px;
+
+        font-size: 13px;
+
+        min-height: 46px;
+    }
+
+
+    /* Feedback */
+
+    #secretFeedback {
+        font-size: 13px;
+
+        line-height: 1.5;
+
+        margin-top: 12px;
+    }
+
+
+    /* Reveal */
+
+    .reveal-heart {
+        font-size: 54px;
+
+        margin-bottom: 8px;
+    }
+
+    #secretReveal h1 {
+        font-size: 27px;
+
+        line-height: 1.25;
+
+        margin:
+            12px 0 20px;
+    }
+
+    .secret-message {
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+    .secret-message p {
+        margin-bottom: 15px;
+    }
+
+    .secret-highlight {
+        font-size: 16px;
+
+        line-height: 1.5;
+    }
+
+    .secret-quote {
+        padding: 15px;
+
+        margin: 18px 0;
+
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+    .secret-sign {
+        margin-top: 20px !important;
+    }
+
+
+    /* Buttons */
+
+    #unlockSecretBtn,
+    #secretContinueBtn {
+        width: 100%;
+
+        max-width: 280px;
+
+        padding:
+            13px 18px;
+
+        margin-top: 18px;
+    }
+}
+
+
+/* =====================================
+   VERY SMALL PHONES
+===================================== */
+
+@media (max-width: 380px) {
+
+    #secretSection {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .secret-card {
+        padding:
+            24px 13px;
+
+        border-radius: 19px;
+    }
+
+    #secretIntro h1,
+    #secretReveal h1 {
+        font-size: 24px;
+    }
+
+    .secret-question {
+        font-size: 13px;
+    }
+
+    .secret-option {
+        font-size: 12px;
+    }
+
+    .secret-message {
+        font-size: 13px;
     }
 }
