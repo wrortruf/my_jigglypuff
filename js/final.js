@@ -64,7 +64,7 @@ const finalPhotos=[
 
 "assets/images/memories/5.png",
 
-"assets/images/memories/5.png",
+"assets/images/memories/19.png",
 
 "assets/images/memories/9.png",
 
