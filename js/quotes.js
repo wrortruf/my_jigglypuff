@@ -128,3 +128,21 @@ english:"Thank you for being a part of these memories. They will always remain a
 ];
 
 console.log(window.memories);
+
+// =====================================
+// MEMORY IMAGE PRELOADER
+// =====================================
+
+window.memoryImageCache = {};
+
+window.memories.forEach((memory, index) => {
+
+    const img = new Image();
+
+    img.onload = () => {
+        window.memoryImageCache[index] = img;
+    };
+
+    img.src = memory.image;
+
+});
