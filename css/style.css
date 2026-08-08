@@ -3156,3 +3156,700 @@ a:focus-visible, [tabindex]:focus-visible{
         font-size: 28px;
     }
 }
+
+/* =====================================
+        SECRET REVEAL
+===================================== */
+
+#secretSection{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px 20px;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+
+    z-index:49;
+
+    -webkit-overflow-scrolling:touch;
+
+    box-sizing:border-box;
+}
+
+#secretSection.active{
+
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+
+/* =====================================
+        BACKGROUND
+===================================== */
+
+.secret-bg{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+}
+
+.secret-glow{
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    filter:blur(70px);
+
+    opacity:.45;
+}
+
+.glow-one{
+
+    background:#ff9fc4;
+
+    top:-100px;
+    left:-100px;
+}
+
+.glow-two{
+
+    background:#c79cff;
+
+    bottom:-120px;
+    right:-100px;
+}
+
+
+/* =====================================
+        CARD
+===================================== */
+
+.secret-card{
+
+    width:min(92%,650px);
+
+    max-height:88dvh;
+
+    overflow-y:auto;
+
+    padding:42px 32px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.48);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.7);
+
+    box-shadow:
+        0 25px 70px rgba(100,40,80,.18),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+
+    box-sizing:border-box;
+
+    animation:secretCardIn .8s ease;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+
+/* scrollbar */
+
+.secret-card::-webkit-scrollbar{
+
+    width:5px;
+}
+
+.secret-card::-webkit-scrollbar-track{
+
+    background:transparent;
+}
+
+.secret-card::-webkit-scrollbar-thumb{
+
+    background:rgba(200,80,130,.35);
+
+    border-radius:20px;
+}
+
+
+/* =====================================
+        INTRO
+===================================== */
+
+#secretIntro{
+
+    width:100%;
+}
+
+.secret-icon{
+
+    font-size:65px;
+
+    margin-bottom:15px;
+
+    animation:secretFloat 3s ease-in-out infinite;
+}
+
+#secretIntro h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(30px,5vw,44px);
+
+    color:#8f3158;
+
+    margin:15px 0;
+}
+
+#secretIntro p{
+
+    color:#684b58;
+
+    line-height:1.8;
+
+    max-width:500px;
+
+    margin:10px auto;
+}
+
+.secret-hint{
+
+    color:#b84d78 !important;
+
+    font-weight:600;
+}
+
+
+/* =====================================
+        BUTTON
+===================================== */
+
+#unlockSecretBtn,
+#secretContinueBtn{
+
+    border:none;
+
+    padding:14px 26px;
+
+    margin-top:20px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff8fb5,
+            #d85b91
+        );
+
+    color:white;
+
+    font-family:Poppins,sans-serif;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px rgba(216,91,145,.28);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        opacity .3s ease;
+}
+
+#unlockSecretBtn:hover,
+#secretContinueBtn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(216,91,145,.38);
+}
+
+#unlockSecretBtn:active,
+#secretContinueBtn:active{
+
+    transform:scale(.96);
+}
+
+
+/* =====================================
+        HIDDEN SCREENS
+===================================== */
+
+.secret-screen{
+
+    display:none;
+
+    animation:secretFade .7s ease;
+}
+
+.secret-screen.active{
+
+    display:block;
+}
+
+
+/* =====================================
+        LOCK
+===================================== */
+
+.lock-animation{
+
+    font-size:65px;
+
+    margin-bottom:15px;
+
+    animation:lockShake 2s ease-in-out infinite;
+}
+
+#secretLock h2{
+
+    font-family:"Playfair Display",serif;
+
+    color:#8f3158;
+
+    margin-bottom:10px;
+}
+
+#secretLock > p{
+
+    color:#684b58;
+
+    margin-bottom:20px;
+}
+
+
+/* =====================================
+        QUESTION
+===================================== */
+
+.secret-question{
+
+    padding:18px;
+
+    margin:20px 0;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.55);
+
+    border:1px solid rgba(200,100,140,.15);
+
+    color:#70344e;
+
+    font-weight:600;
+
+    line-height:1.6;
+}
+
+
+/* =====================================
+        OPTIONS
+===================================== */
+
+.secret-options{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:12px;
+
+    margin-top:15px;
+}
+
+.secret-option{
+
+    padding:14px 12px;
+
+    border-radius:16px;
+
+    border:
+        1px solid
+        rgba(190,100,140,.2);
+
+    background:rgba(255,255,255,.55);
+
+    color:#674553;
+
+    font-family:Poppins,sans-serif;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border .25s ease;
+}
+
+.secret-option:hover{
+
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.85);
+
+    border-color:
+        rgba(190,100,140,.45);
+}
+
+.secret-option.correct{
+
+    background:rgba(120,220,160,.35);
+
+    border-color:rgba(50,170,100,.5);
+
+    animation:correctPulse .5s ease;
+}
+
+.secret-option.wrong{
+
+    background:rgba(255,120,140,.3);
+
+    border-color:rgba(220,70,100,.5);
+
+    animation:wrongShake .45s ease;
+}
+
+
+/* =====================================
+        FEEDBACK
+===================================== */
+
+#secretFeedback{
+
+    min-height:28px;
+
+    margin-top:15px;
+
+    font-weight:600;
+
+    font-size:14px;
+
+    color:#b84d78;
+}
+
+
+/* =====================================
+        REVEAL
+===================================== */
+
+.reveal-heart{
+
+    font-size:70px;
+
+    margin-bottom:12px;
+
+    animation:
+        secretHeart 1.5s ease-in-out infinite;
+}
+
+#secretReveal h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(28px,5vw,40px);
+
+    color:#8f3158;
+
+    margin:15px 0 25px;
+}
+
+
+/* =====================================
+        MESSAGE
+===================================== */
+
+.secret-message{
+
+    color:#684b58;
+
+    line-height:1.9;
+
+    font-size:15px;
+}
+
+.secret-message p{
+
+    margin:0 0 18px;
+}
+
+.secret-highlight{
+
+    color:#9b3d65;
+
+    font-size:18px;
+
+    font-weight:700;
+}
+
+.secret-quote{
+
+    margin:25px 0;
+
+    padding:20px;
+
+    border-left:
+        4px solid #d85b91;
+
+    border-radius:0 16px 16px 0;
+
+    background:rgba(255,255,255,.5);
+
+    color:#8f3158;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:17px;
+
+    font-style:italic;
+}
+
+.secret-final{
+
+    font-weight:600;
+}
+
+.secret-sign{
+
+    color:#9b3d65;
+
+    font-weight:700;
+
+    margin-top:25px !important;
+}
+
+
+/* =====================================
+        ANIMATIONS
+===================================== */
+
+@keyframes secretCardIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(35px)
+            scale(.97);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes secretFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+@keyframes secretFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-9px);
+    }
+}
+
+@keyframes lockShake{
+
+    0%,100%{
+        transform:rotate(0);
+    }
+
+    20%{
+        transform:rotate(-5deg);
+    }
+
+    40%{
+        transform:rotate(5deg);
+    }
+
+    60%{
+        transform:rotate(-4deg);
+    }
+
+    80%{
+        transform:rotate(4deg);
+    }
+}
+
+@keyframes secretHeart{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+@keyframes correctPulse{
+
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+@keyframes wrongShake{
+
+    25%{
+        transform:translateX(-6px);
+    }
+
+    50%{
+        transform:translateX(6px);
+    }
+
+    75%{
+        transform:translateX(-4px);
+    }
+}
+
+
+/* =====================================
+        MOBILE
+===================================== */
+
+@media(max-width:600px){
+
+    #secretSection{
+
+        padding:
+            max(18px,env(safe-area-inset-top))
+            12px
+            max(20px,env(safe-area-inset-bottom));
+
+        align-items:flex-start;
+    }
+
+    .secret-card{
+
+        width:100%;
+
+        max-height:
+            calc(100dvh - 30px);
+
+        padding:
+            30px 17px;
+
+        border-radius:23px;
+    }
+
+    .secret-icon{
+
+        font-size:50px;
+    }
+
+    #secretIntro h1{
+
+        font-size:29px;
+    }
+
+    #secretIntro p{
+
+        font-size:14px;
+
+        line-height:1.75;
+    }
+
+    .secret-options{
+
+        grid-template-columns:1fr;
+
+        gap:10px;
+    }
+
+    .secret-option{
+
+        padding:14px 12px;
+
+        font-size:13px;
+    }
+
+    .secret-message{
+
+        font-size:14px;
+
+        line-height:1.8;
+    }
+
+    .secret-highlight{
+
+        font-size:16px;
+    }
+
+    .secret-quote{
+
+        font-size:15px;
+
+        padding:16px;
+    }
+
+    .reveal-heart{
+
+        font-size:55px;
+    }
+}
