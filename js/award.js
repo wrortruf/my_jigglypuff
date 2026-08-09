@@ -200,3 +200,38 @@ awardSection.classList.remove("active");
 openWish();
 
 });
+
+// =====================================
+// DOWNLOAD AWARD
+// =====================================
+
+// =====================================
+// DOWNLOAD CERTIFICATE
+// =====================================
+
+const awardDownloadBtn = document.getElementById("awardDownload");
+
+if (awardDownloadBtn) {
+
+    awardDownloadBtn.addEventListener("click", () => {
+
+        const certificatePath =
+            "assets/images/certificate.png";
+
+        const downloadLink =
+            document.createElement("a");
+
+        downloadLink.href = certificatePath;
+
+        downloadLink.download =
+            "Abhilipsa-Worlds-Best-Sister-Certificate.png";
+
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+
+        document.body.removeChild(downloadLink);
+
+    });
+
+}

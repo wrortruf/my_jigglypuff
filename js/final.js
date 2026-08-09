@@ -105,6 +105,21 @@ function openFinal() {
 
     photoIndex = 0;
 
+    const movieCredits = document.getElementById("movieCredits");
+
+    if (movieCredits) {
+        movieCredits.classList.remove("show");
+
+        const creditsScroll =
+            movieCredits.querySelector(".credits-scroll");
+
+        if (creditsScroll) {
+            creditsScroll.style.animation = "none";
+            creditsScroll.offsetHeight;
+            creditsScroll.style.animation = "";
+        }
+    }
+
     // Clear previous timer
     if (photoTimer) {
         clearTimeout(photoTimer);
@@ -182,12 +197,111 @@ function showFinalPhoto(index) {
 
     if (index >= finalPhotos.length) {
 
-        // All photos completed
+        // =====================================
+        // PHOTOS FINISHED
+        // =====================================
+
         setTimeout(() => {
 
-            finalButtons.classList.add("show");
+            const movieCredits =
+                document.getElementById("movieCredits");
+
+            const finalTitle =
+                document.getElementById("finalTitle");
+
+            const finalTextElement =
+                document.getElementById("finalText");
+
+            const photoBox =
+                document.querySelector(".final-photo-box");
+
+
+            // =====================================
+            // HIDE OLD FINAL CONTENT
+            // =====================================
+
+            if (finalTitle) {
+
+                finalTitle.style.transition =
+                    "opacity 1s ease";
+
+                finalTitle.style.opacity = "0";
+            }
+
+
+            if (finalTextElement) {
+
+                finalTextElement.style.transition =
+                    "opacity 1s ease";
+
+                finalTextElement.style.opacity = "0";
+            }
+
+
+            if (photoBox) {
+
+                photoBox.style.transition =
+                    "opacity 1s ease";
+
+                photoBox.style.opacity = "0";
+            }
+
+
+            // =====================================
+            // SHOW MOVIE CREDITS
+            // =====================================
+
+            setTimeout(() => {
+
+                if (!movieCredits) {
+
+                    finalButtons.classList.add("show");
+
+                    return;
+                }
+
+
+                movieCredits.classList.add("show");
+
+
+                // =====================================
+                // RESTART CREDIT ANIMATION
+                // =====================================
+
+                const creditsScroll =
+                    movieCredits.querySelector(
+                        ".credits-scroll"
+                    );
+
+
+                if (creditsScroll) {
+
+                    creditsScroll.style.animation = "none";
+
+                    // Force browser reflow
+                    void creditsScroll.offsetHeight;
+
+                    creditsScroll.style.animation =
+                        "movieCreditsScroll 32s linear forwards";
+                }
+
+
+                // =====================================
+                // CREDITS FINISHED
+                // =====================================
+
+                setTimeout(() => {
+
+                    finalButtons.classList.add("show");
+
+                }, 32000);
+
+
+            }, 1000);
+
 
         }, 1500);
+
 
         return;
     }

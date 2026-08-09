@@ -50,10 +50,10 @@ const quizQuestions = [
         question: "Mere liye aapka sabse important role kya hai? ❤️",
 
         options: [
-            "Sirf meri sister",
-            "Meri best friend bhi",
-            "Meri teacher",
-            "Meri enemy 😂"
+            "Sirf mere sister",
+            "Mere friend bhi",
+            "Mere teacher",
+            "Mere enemy 😂"
         ],
 
         answer: 1
@@ -65,12 +65,12 @@ const quizQuestions = [
 
         options: [
             "Didi",
-            "Madam",
+            "Ma'am",
             "Aunty 😂",
-            "Boss"
+            "Jigglypuff"
         ],
 
-        answer: 0
+        answer: 3
     },
 
 
@@ -93,7 +93,7 @@ const quizQuestions = [
 
         options: [
             "Overthinking",
-            "Bahut zyada padhna",
+            "Bahut zyada padhna 😂",
             "Subah jaldi uthna",
             "Har waqt serious rehna"
         ],
@@ -159,13 +159,13 @@ const quizQuestions = [
 
 
     {
-        question: "Agar duniya mein sab kuch badal jaaye toh kya nahi badlega? 🤍",
+        question: "Mai aapko kis word se pareshaan krta hun 😂",
 
         options: [
-            "Hamari photos",
-            "Hamari memories",
-            "Mera pyaar aur respect",
-            "Mera phone 😂"
+            "Paagal",
+            "Parallel World",
+            "Exceptional",
+            "Amrita"
         ],
 
         answer: 2
