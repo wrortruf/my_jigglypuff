@@ -209,28 +209,72 @@ openWish();
 // DOWNLOAD CERTIFICATE
 // =====================================
 
-const awardDownloadBtn = document.getElementById("awardDownload");
+const awardDownload = document.getElementById("awardDownload");
 
-if (awardDownloadBtn) {
+if (awardDownload) {
 
-    awardDownloadBtn.addEventListener("click", () => {
+    awardDownload.addEventListener("click", async () => {
 
-        const certificatePath =
-            "assets/images/certificate.png";
+        const originalText = awardDownload.innerHTML;
 
-        const downloadLink =
-            document.createElement("a");
+        awardDownload.innerHTML = "⏳ Preparing Certificate...";
+        awardDownload.disabled = true;
 
-        downloadLink.href = certificatePath;
+        try {
 
-        downloadLink.download =
-            "Abhilipsa-Worlds-Best-Sister-Certificate.png";
+            const imageURL =
+                "https://wrortruf.github.io/my_jigglypuff/assets/images/certificate.png";
 
-        document.body.appendChild(downloadLink);
+            const response = await fetch(imageURL, {
+                cache: "no-store"
+            });
 
-        downloadLink.click();
+            if (!response.ok) {
+                throw new Error("Certificate not found");
+            }
 
-        document.body.removeChild(downloadLink);
+            const blob = await response.blob();
+
+            const blobURL =
+                URL.createObjectURL(blob);
+
+            const link =
+                document.createElement("a");
+
+            link.href = blobURL;
+
+            link.download =
+                "Abhilipsa-Worlds-Best-Sister.png";
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            link.remove();
+
+            setTimeout(() => {
+                URL.revokeObjectURL(blobURL);
+            }, 1000);
+
+        } catch (error) {
+
+            console.error(
+                "Certificate download failed:",
+                error
+            );
+
+            alert(
+                "Certificate download nahi ho paaya ❤️"
+            );
+
+        } finally {
+
+            awardDownload.innerHTML =
+                originalText;
+
+            awardDownload.disabled = false;
+
+        }
 
     });
 
