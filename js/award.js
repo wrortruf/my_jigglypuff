@@ -209,28 +209,31 @@ openWish();
 // DOWNLOAD CERTIFICATE
 // =====================================
 
-const awardDownload = document.getElementById("awardDownload");
+// =====================================
+// DOWNLOAD CERTIFICATE
+// =====================================
 
-if (awardDownload) {
+const downloadAward = document.getElementById("downloadAward");
 
-    awardDownload.addEventListener("click", async () => {
+if (downloadAward) {
 
-        const originalText = awardDownload.innerHTML;
-
-        awardDownload.innerHTML = "⏳ Preparing Certificate...";
-        awardDownload.disabled = true;
+    downloadAward.addEventListener("click", async () => {
 
         try {
 
-            const imageURL =
-                "https://wrortruf.github.io/my_jigglypuff/assets/images/certificate.png";
+            downloadAward.disabled = true;
+            downloadAward.innerHTML = "⏳ Preparing...";
 
-            const response = await fetch(imageURL, {
-                cache: "no-store"
-            });
+            // LOCAL certificate
+            const certificateURL =
+                "assets/images/certificate.png";
+
+            const response = await fetch(certificateURL);
 
             if (!response.ok) {
-                throw new Error("Certificate not found");
+                throw new Error(
+                    "Certificate not found: " + response.status
+                );
             }
 
             const blob = await response.blob();
@@ -238,41 +241,54 @@ if (awardDownload) {
             const blobURL =
                 URL.createObjectURL(blob);
 
-            const link =
+            const downloadLink =
                 document.createElement("a");
 
-            link.href = blobURL;
+            downloadLink.href = blobURL;
 
-            link.download =
-                "Abhilipsa-Worlds-Best-Sister.png";
+            downloadLink.download =
+                "My-cute-jigglypuff.png";
 
-            document.body.appendChild(link);
+            document.body.appendChild(downloadLink);
 
-            link.click();
+            downloadLink.click();
 
-            link.remove();
+            downloadLink.remove();
 
             setTimeout(() => {
                 URL.revokeObjectURL(blobURL);
             }, 1000);
 
+            downloadAward.innerHTML =
+                "✅ Certificate Downloaded";
+
+            setTimeout(() => {
+
+                downloadAward.innerHTML =
+                    "📜 Download My Award";
+
+                downloadAward.disabled = false;
+
+            }, 2500);
+
         } catch (error) {
 
             console.error(
-                "Certificate download failed:",
+                "Certificate download error:",
                 error
             );
 
-            alert(
-                "Certificate download nahi ho paaya ❤️"
-            );
+            downloadAward.disabled = false;
 
-        } finally {
+            downloadAward.innerHTML =
+                "❌ Download Failed";
 
-            awardDownload.innerHTML =
-                originalText;
+            setTimeout(() => {
 
-            awardDownload.disabled = false;
+                downloadAward.innerHTML =
+                    "📜 Download My Award";
+
+            }, 2500);
 
         }
 
