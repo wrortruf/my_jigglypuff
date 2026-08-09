@@ -425,62 +425,321 @@ if (galleryBtn) {
 // EXIT
 // =====================================
 
+// =====================================
+// CINEMATIC EXIT / GOODBYE EXPERIENCE
+// =====================================
+
+const exitEnding = document.getElementById("exitEnding");
+
+const exitOpening = document.getElementById("exitOpening");
+const exitMemory = document.getElementById("exitMemory");
+const exitMessage = document.getElementById("exitMessage");
+const exitTheEnd = document.getElementById("exitTheEnd");
+
+const exitRestart = document.getElementById("exitRestart");
+const restartJourneyBtn =
+    document.getElementById("restartJourneyBtn");
+
+const exitMemoryPhoto =
+    document.getElementById("exitMemoryPhoto");
+
+
+// =====================================
+// EXIT MEMORY
+// =====================================
+
+// Yahan apni favourite photo rakh sakte ho
+const exitPhoto =
+    "assets/images/memories/25.png";
+
+
+// =====================================
+// TIMERS
+// =====================================
+
+let exitTimers = [];
+
+function clearExitTimers() {
+
+    exitTimers.forEach(timer => {
+        clearTimeout(timer);
+    });
+
+    exitTimers = [];
+
+}
+
+
+// =====================================
+// HELPER
+// =====================================
+
+function exitDelay(callback, time) {
+
+    const timer = setTimeout(callback, time);
+
+    exitTimers.push(timer);
+
+    return timer;
+}
+
+
+// =====================================
+// HIDE ALL EXIT PHASES
+// =====================================
+
+function hideExitPhases() {
+
+    if (exitOpening)
+        exitOpening.classList.remove("show");
+
+    if (exitMemory)
+        exitMemory.classList.remove("show");
+
+    if (exitMessage)
+        exitMessage.classList.remove("show");
+
+    if (exitTheEnd)
+        exitTheEnd.classList.remove("show");
+
+}
+
+
+// =====================================
+// START EXIT EXPERIENCE
+// =====================================
+
+function startExitExperience() {
+
+    if (!exitEnding) return;
+
+
+    // Clear previous animation timers
+    clearExitTimers();
+
+
+    // Hide all phases
+    hideExitPhases();
+
+
+    // Hide restart button
+    if (exitRestart) {
+
+        exitRestart.classList.remove("show");
+
+    }
+
+
+    // Set favourite memory
+    if (exitMemoryPhoto) {
+
+        exitMemoryPhoto.src = exitPhoto;
+
+    }
+
+
+    // Reset ending scroll
+    exitEnding.scrollTop = 0;
+
+
+    // Show ending screen
+    exitEnding.classList.add("active");
+
+
+    // =================================
+    // PHASE 1
+    // =================================
+
+    exitDelay(() => {
+
+        if (exitOpening) {
+
+            exitOpening.classList.add("show");
+
+        }
+
+    }, 800);
+
+
+    // =================================
+    // PHASE 1 → PHASE 2
+    // =================================
+
+    exitDelay(() => {
+
+        if (exitOpening) {
+
+            exitOpening.classList.remove("show");
+
+        }
+
+        exitDelay(() => {
+
+            if (exitMemory) {
+
+                exitMemory.classList.add("show");
+
+            }
+
+        }, 900);
+
+    }, 4200);
+
+
+    // =================================
+    // PHASE 2 → PHASE 3
+    // =================================
+
+    exitDelay(() => {
+
+        if (exitMemory) {
+
+            exitMemory.classList.remove("show");
+
+        }
+
+        exitDelay(() => {
+
+            if (exitMessage) {
+
+                exitMessage.classList.add("show");
+
+            }
+
+        }, 900);
+
+    }, 8500);
+
+
+    // =================================
+    // PHASE 3 → PHASE 4
+    // =================================
+
+    exitDelay(() => {
+
+        if (exitMessage) {
+
+            exitMessage.classList.remove("show");
+
+        }
+
+        exitDelay(() => {
+
+            if (exitTheEnd) {
+
+                exitTheEnd.classList.add("show");
+
+            }
+
+        }, 1000);
+
+    }, 15500);
+
+
+    // =================================
+    // SHOW RESTART
+    // =================================
+
+    exitDelay(() => {
+
+        if (exitRestart) {
+
+            exitRestart.classList.add("show");
+
+        }
+
+    }, 19000);
+
+}
+
+
+// =====================================
+// EXIT BUTTON
+// =====================================
+
 if (exitBtn) {
 
     exitBtn.addEventListener("click", () => {
 
+        // Stop final photo slideshow
         if (photoTimer) {
+
             clearTimeout(photoTimer);
+
+            photoTimer = null;
+
         }
 
-        finalSection.style.transition = "2s";
-        finalSection.style.opacity = "0";
 
-        setTimeout(() => {
+        // Stop any existing exit animation
+        clearExitTimers();
 
-            document.body.innerHTML = `
 
-                <div style="
-                    min-height:100vh;
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    flex-direction:column;
-                    background:#000;
-                    color:white;
-                    font-family:Poppins,sans-serif;
-                    text-align:center;
-                    padding:25px;
-                ">
+        // Hide final section
+        if (finalSection) {
 
-                    <h1 style="font-size:50px;">
-                        ❤️
-                    </h1>
+            finalSection.classList.remove("active");
 
-                    <h2>
-                        Thank You For Being
-                        The Best Sister
-                    </h2>
+            finalSection.style.opacity = "";
 
-                    <p style="
-                        margin-top:20px;
-                        opacity:.8;
-                    ">
+        }
 
-                        Made With Love
 
-                        <br>
-
-                        Your Brother 🤍
-
-                    </p>
-
-                </div>
-
-            `;
-
-        }, 2000);
+        // Start cinematic ending
+        startExitExperience();
 
     });
 
 }
+
+
+// =====================================
+// START AGAIN
+// =====================================
+
+if (restartJourneyBtn) {
+
+    restartJourneyBtn.addEventListener("click", () => {
+
+        clearExitTimers();
+
+
+        // Hide ending
+        if (exitEnding) {
+
+            exitEnding.classList.remove("active");
+
+        }
+
+
+        // Small pause before restart
+        setTimeout(() => {
+
+            location.reload();
+
+        }, 500);
+
+    });
+
+}
+
+
+// =====================================
+// ESC KEY
+// =====================================
+
+document.addEventListener("keydown", (event) => {
+
+    if (
+        event.key === "Escape" &&
+        exitEnding &&
+        exitEnding.classList.contains("active")
+    ) {
+
+        clearExitTimers();
+
+        exitEnding.classList.remove("active");
+
+    }
+
+});
