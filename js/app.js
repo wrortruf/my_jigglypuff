@@ -323,3 +323,75 @@ if (promiseBtn) {
 
 }
 
+
+// =====================================
+// 🚀 DEBUG: DIRECT STAR SECTION
+// =====================================
+
+const DEBUG_STAR = false;
+
+if (DEBUG_STAR) {
+
+    window.addEventListener("load", () => {
+
+        setTimeout(() => {
+
+            console.log("⭐ DEBUG MODE: Opening Star Section");
+
+            // Loader hide
+            const loader = document.getElementById("loader");
+
+            if (loader) {
+                loader.style.display = "none";
+            }
+
+            // Countdown hide
+            const countdown =
+                document.getElementById("countdownScreen");
+
+            if (countdown) {
+                countdown.style.display = "none";
+                countdown.classList.remove("active");
+            }
+
+            // Hide all sections
+            document.querySelectorAll("section").forEach(section => {
+
+                section.classList.remove("active");
+
+            });
+
+            // =====================================
+            // OPEN STAR SECTION
+            // =====================================
+
+            const starSection =
+                document.getElementById("starSection");
+
+            if (!starSection) {
+
+                console.error("❌ starSection nahi mila!");
+
+                return;
+            }
+
+            starSection.classList.add("active");
+
+            // =====================================
+            // IMPORTANT
+            // Reset Star Game
+            // =====================================
+
+            if (typeof openStars === "function") {
+
+                openStars();
+
+            }
+
+            console.log("⭐ Star Section opened!");
+
+        }, 1000);
+
+    });
+
+}
