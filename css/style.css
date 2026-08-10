@@ -10759,3 +10759,15 @@ a:focus-visible, [tabindex]:focus-visible{
     }
 
 }
+
+#loaderComplete {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#loaderComplete.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}

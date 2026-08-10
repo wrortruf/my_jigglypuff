@@ -19,740 +19,814 @@ const continueBtn = document.getElementById("continueBtn");
 
 
 
-
-
 // =====================================================
-// 🌸 RAKSHABANDHAN — PREMIUM LOADING SYSTEM
-// =====================================================
-
-console.log("🌸 Rakshabandhan Journey Initializing...");
-
-// =====================================================
-// ELEMENTS
+// 🌸 RAKSHABANDHAN PREMIUM LOADER
+// Smooth • Long • Mobile Friendly
 // =====================================================
 
-const loader = document.getElementById("loader");
+(function () {
 
-const loaderProgress = document.getElementById("loaderProgress");
-const loaderPercent = document.getElementById("loaderPercent");
-const loaderStatus = document.getElementById("loaderStatus");
-const loaderTip = document.getElementById("loaderTip");
+    "use strict";
 
-const loaderHeart = document.getElementById("loaderHeart");
-const loaderRing = document.getElementById("loaderRing");
+    const loader = document.getElementById("loader");
 
+    if (!loader) {
+        console.warn("❌ Loader not found");
+        return;
+    }
 
-// =====================================================
-// SETTINGS
-// =====================================================
+    // =================================================
+    // ELEMENTS
+    // =================================================
 
-// Loader kabhi bahut jaldi disappear nahi hoga
-const MIN_LOADING_TIME = 4500;
+    const statusText =
+        document.getElementById("loaderStatusText");
 
-// Maximum fake-progress speed
-const PROGRESS_LIMIT_BEFORE_LOAD = 94;
+    const subText =
+        document.getElementById("loaderSubText");
 
+    const percentage =
+        document.getElementById("loaderPercentage");
 
-// =====================================================
-// LOADING MESSAGES
-// =====================================================
+    const progressBar =
+        document.getElementById("loaderProgressBar");
 
-const loadingMessages = [
+    const progressLabel =
+        document.getElementById("loaderProgressLabel");
 
-    "Preparing something special for you...",
+    const loadedCount =
+        document.getElementById("loaderLoadedCount");
 
-    "Gathering little moments of happiness...",
+    const totalCount =
+        document.getElementById("loaderTotalCount");
 
-    "Adding a little love to this journey...",
+    const quoteText =
+        document.getElementById("loaderQuoteText");
 
-    "Preparing beautiful memories...",
-
-    "Creating something from the heart...",
-
-    "Almost ready...",
-
-    "Just a little more magic...",
-
-    "Putting everything together...",
-
-    "One last little touch...",
-
-    "Your journey is almost ready ❤️"
-
-];
+    const completeScreen =
+        document.getElementById("loaderComplete");
 
 
-// =====================================================
-// LOADING TIPS
-// =====================================================
+    // =================================================
+    // STAGES
+    // =================================================
 
-const loadingTips = [
-
-    "Some bonds are felt, not explained. 🤍",
-
-    "A sister is a little piece of home. 🌸",
-
-    "The best memories are made together. ✨",
-
-    "Some people make ordinary moments special. 💖",
-
-    "A little love can make a big difference. 🌷",
-
-    "This little journey was made with love. ❤️",
-
-    "Because some relationships deserve more than words. 🤍"
-
-];
+    const stages = [
+        document.getElementById("loaderStage1"),
+        document.getElementById("loaderStage2"),
+        document.getElementById("loaderStage3"),
+        document.getElementById("loaderStage4")
+    ];
 
 
-// =====================================================
-// VARIABLES
-// =====================================================
+    // =================================================
+    // LOADING MESSAGES
+    // =================================================
 
-let progress = 0;
+    const messages = [
 
-let realLoadingFinished = false;
+        {
+            main: "Preparing something special...",
+            sub: "A little surprise is slowly coming together.",
+            label: "Setting everything up..."
+        },
 
-let loaderStartTime = Date.now();
+        {
+            main: "Adding a little warmth...",
+            sub: "Because this little journey is made with love.",
+            label: "Creating the atmosphere..."
+        },
 
-let progressTimer = null;
+        {
+            main: "Preparing your wishes...",
+            sub: "Every little word has been chosen with care.",
+            label: "Preparing heartfelt wishes..."
+        },
 
-let messageIndex = 0;
+        {
+            main: "Bringing everything together...",
+            sub: "Making every little detail special.",
+            label: "Putting everything together..."
+        },
 
-let tipIndex = 0;
+        {
+            main: "Adding the final touch...",
+            sub: "Almost ready for you...",
+            label: "Finishing the little details..."
+        },
 
+        {
+            main: "One last moment...",
+            sub: "Your little journey is almost ready. ❤️",
+            label: "Almost there..."
+        }
 
-// =====================================================
-// SAFE TEXT UPDATE
-// =====================================================
-
-function updateText(element, text) {
-
-    if (!element) return;
-
-    element.style.opacity = "0";
-
-    setTimeout(() => {
-
-        element.textContent = text;
-
-        element.style.opacity = "1";
-
-    }, 180);
-
-}
+    ];
 
 
-// =====================================================
-// UPDATE PROGRESS
-// =====================================================
+    // =================================================
+    // QUOTES
+    // =================================================
 
-function updateProgress(value) {
+    const quotes = [
 
-    progress = Math.max(
-        0,
-        Math.min(100, value)
-    );
+        "Some moments are worth waiting for...",
 
-    // Progress bar
-    if (loaderProgress) {
+        "The best memories are made with the people we love.",
 
-        loaderProgress.style.width =
-            progress + "%";
+        "A little love can turn an ordinary moment into a beautiful memory.",
 
+        "Some bonds don't need words. They simply stay in the heart.",
+
+        "The smallest surprises can carry the biggest feelings.",
+
+        "This little journey was made especially for you. 🤍",
+
+        "Because some people deserve something made with love."
+
+    ];
+
+
+    // =================================================
+    // SETTINGS
+    // =================================================
+
+    // Long enough to feel intentional,
+    // but not unnecessarily slow.
+    const MINIMUM_TIME = 8500;
+
+    // Small extra time after the browser is ready.
+    const READY_BUFFER = 500;
+
+    const startTime = performance.now();
+
+    let progress = 0;
+    let targetProgress = 0;
+
+    let currentMessage = -1;
+    let quoteIndex = 0;
+
+    let pageReady =
+        document.readyState === "complete";
+
+    let finished = false;
+
+
+    // =================================================
+    // INITIAL UI
+    // =================================================
+
+    if (totalCount) {
+        totalCount.textContent = "100";
+    }
+
+    if (loadedCount) {
+        loadedCount.textContent = "0";
+    }
+
+    if (percentage) {
+        percentage.textContent = "0%";
+    }
+
+    if (progressBar) {
+        progressBar.style.width = "0%";
+    }
+
+    if (quoteText) {
+        quoteText.textContent = quotes[0];
     }
 
 
-    // Percentage
-    if (loaderPercent) {
-
-        loaderPercent.textContent =
-            Math.floor(progress) + "%";
-
-    }
-
-
-    // Ring progress
-    if (loaderRing) {
-
-        loaderRing.style.setProperty(
-            "--progress",
-            progress
-        );
-
-    }
-
-
-    // Heart animation
-    if (loaderHeart) {
-
-        const scale =
-            1 + (progress / 100) * 0.12;
-
-        loaderHeart.style.transform =
-            `scale(${scale})`;
-
-    }
-
-}
-
-
-// =====================================================
-// FAKE PROGRESS
-// =====================================================
-
-function startFakeProgress() {
-
-    progressTimer = setInterval(() => {
-
-        // Don't go beyond the safe limit
-        if (progress >= PROGRESS_LIMIT_BEFORE_LOAD) {
-
-            return;
-
-        }
-
-
-        // Slow down as we approach the end
-        let increment;
-
-        if (progress < 30) {
-
-            increment =
-                1.8 + Math.random() * 2.2;
-
-        }
-        else if (progress < 60) {
-
-            increment =
-                0.8 + Math.random() * 1.5;
-
-        }
-        else if (progress < 80) {
-
-            increment =
-                0.35 + Math.random() * 0.9;
-
-        }
-        else {
-
-            increment =
-                0.12 + Math.random() * 0.35;
-
-        }
-
-
-        updateProgress(
-            Math.min(
-                PROGRESS_LIMIT_BEFORE_LOAD,
-                progress + increment
-            )
-        );
-
-    }, 180);
-
-}
-
-
-// =====================================================
-// LOADING MESSAGE ROTATION
-// =====================================================
-
-function startMessageRotation() {
-
-    updateText(
-        loaderStatus,
-        loadingMessages[0]
-    );
-
-
-    setInterval(() => {
-
-        // Stop changing after loading
-        if (realLoadingFinished) return;
-
-        messageIndex++;
-
-        if (
-            messageIndex >=
-            loadingMessages.length
-        ) {
-
-            messageIndex = 0;
-
-        }
-
-
-        updateText(
-            loaderStatus,
-            loadingMessages[messageIndex]
-        );
-
-    }, 1900);
-
-}
-
-
-// =====================================================
-// LOADING TIP ROTATION
-// =====================================================
-
-function startTipRotation() {
-
-    updateText(
-        loaderTip,
-        loadingTips[0]
-    );
-
-
-    setInterval(() => {
-
-        if (realLoadingFinished) return;
-
-        tipIndex++;
-
-        if (
-            tipIndex >=
-            loadingTips.length
-        ) {
-
-            tipIndex = 0;
-
-        }
-
-
-        updateText(
-            loaderTip,
-            loadingTips[tipIndex]
-        );
-
-    }, 3000);
-
-}
-
-
-// =====================================================
-// RESOURCE PRELOADING
-// =====================================================
-
-function preloadImages() {
-
-    const images =
-        document.querySelectorAll("img");
-
-    const promises = [];
-
-
-    images.forEach(img => {
-
-        const src =
-            img.getAttribute("src");
-
-        if (!src) return;
-
-
-        promises.push(
-
-            new Promise(resolve => {
-
-                const image =
-                    new Image();
-
-
-                image.onload = () => {
-
-                    resolve();
-
-                };
-
-
-                image.onerror = () => {
-
-                    // Don't block the entire website
-                    resolve();
-
-                };
-
-
-                image.src = src;
-
-            })
-
-        );
-
-    });
-
-
-    return Promise.all(promises);
-
-}
-
-
-// =====================================================
-// PRELOAD AUDIO
-// =====================================================
-
-function preloadAudio() {
-
-    const audioElements =
-        document.querySelectorAll("audio");
-
-    const promises = [];
-
-
-    audioElements.forEach(audio => {
-
-        if (!audio.src) return;
-
-
-        promises.push(
-
-            new Promise(resolve => {
-
-                // Already loaded
-                if (
-                    audio.readyState >= 2
-                ) {
-
-                    resolve();
-
-                    return;
-
-                }
-
-
-                const done = () => {
-
-                    audio.removeEventListener(
-                        "canplaythrough",
-                        done
-                    );
-
-                    audio.removeEventListener(
-                        "error",
-                        done
-                    );
-
-                    resolve();
-
-                };
-
-
-                audio.addEventListener(
-                    "canplaythrough",
-                    done
-                );
-
-
-                audio.addEventListener(
-                    "error",
-                    done
-                );
-
-
-                // Safety timeout
-                setTimeout(
-                    done,
-                    6000
-                );
-
-            })
-
-        );
-
-    });
-
-
-    return Promise.all(promises);
-
-}
-
-
-// =====================================================
-// WAIT FOR DOCUMENT
-// =====================================================
-
-function waitForWindowLoad() {
-
-    return new Promise(resolve => {
-
-        if (
-            document.readyState ===
-            "complete"
-        ) {
-
-            resolve();
-
-            return;
-
-        }
-
+    // =================================================
+    // PAGE READY
+    // =================================================
+
+    if (!pageReady) {
 
         window.addEventListener(
             "load",
-            resolve,
-            {
-                once: true
-            }
+            function () {
+
+                pageReady = true;
+
+            },
+            { once: true }
         );
-
-    });
-
-}
-
-
-// =====================================================
-// COMPLETE LOADING
-// =====================================================
-
-async function finishLoading() {
-
-    realLoadingFinished = true;
-
-
-    // Stop fake progress
-    if (progressTimer) {
-
-        clearInterval(
-            progressTimer
-        );
-
-        progressTimer = null;
 
     }
 
 
-    // Make sure minimum loading duration
-    const elapsed =
-        Date.now() -
-        loaderStartTime;
+    // =================================================
+    // MESSAGE UPDATE
+    // =================================================
 
-    const remaining =
-        Math.max(
+    function setMessage(index) {
+
+        if (index === currentMessage) {
+            return;
+        }
+
+        currentMessage = index;
+
+        const data = messages[index];
+
+        if (!data) {
+            return;
+        }
+
+
+        // Status
+
+        if (statusText) {
+
+            statusText.style.opacity = "0";
+
+            setTimeout(function () {
+
+                if (finished) return;
+
+                statusText.textContent =
+                    data.main;
+
+                statusText.style.opacity = "1";
+
+            }, 160);
+
+        }
+
+
+        // Subtext
+
+        if (subText) {
+
+            subText.style.opacity = "0";
+
+            setTimeout(function () {
+
+                if (finished) return;
+
+                subText.textContent =
+                    data.sub;
+
+                subText.style.opacity = "1";
+
+            }, 200);
+
+        }
+
+
+        // Progress label
+
+        if (progressLabel) {
+
+            progressLabel.style.opacity = "0";
+
+            setTimeout(function () {
+
+                if (finished) return;
+
+                progressLabel.textContent =
+                    data.label;
+
+                progressLabel.style.opacity = "1";
+
+            }, 220);
+
+        }
+
+    }
+
+
+    // =================================================
+    // STAGE UPDATE
+    // =================================================
+
+    function updateStages(value) {
+
+        let activeStage = 0;
+
+
+        if (value >= 25) {
+            activeStage = 1;
+        }
+
+        if (value >= 50) {
+            activeStage = 2;
+        }
+
+        if (value >= 75) {
+            activeStage = 3;
+        }
+
+
+        stages.forEach(function (stage, index) {
+
+            if (!stage) return;
+
+
+            stage.classList.remove(
+                "active",
+                "completed"
+            );
+
+
+            if (index < activeStage) {
+
+                stage.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            if (index === activeStage) {
+
+                stage.classList.add(
+                    "active"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    // =================================================
+    // PROGRESS UI
+    // =================================================
+
+    function updateProgress(value) {
+
+        value = Math.max(
             0,
-            MIN_LOADING_TIME - elapsed
-        );
-
-
-    await new Promise(resolve => {
-
-        setTimeout(
-            resolve,
-            remaining
-        );
-
-    });
-
-
-    // Smoothly finish progress
-    const start =
-        progress;
-
-    const duration =
-        900;
-
-    const animationStart =
-        performance.now();
-
-
-    function animateComplete(now) {
-
-        const elapsed =
-            now -
-            animationStart;
-
-        const percentage =
             Math.min(
-                elapsed / duration,
-                1
-            );
-
-
-        // Ease out
-        const eased =
-            1 -
-            Math.pow(
-                1 - percentage,
-                3
-            );
-
-
-        updateProgress(
-            start +
-            (100 - start) * eased
+                100,
+                Math.round(value)
+            )
         );
 
 
-        if (percentage < 1) {
+        if (percentage) {
 
-            requestAnimationFrame(
-                animateComplete
-            );
+            percentage.textContent =
+                value + "%";
+
+        }
+
+
+        if (loadedCount) {
+
+            loadedCount.textContent =
+                value;
+
+        }
+
+
+        if (progressBar) {
+
+            progressBar.style.width =
+                value + "%";
+
+        }
+
+
+        // ---------------------------------------------
+        // Messages
+        // ---------------------------------------------
+
+        if (value < 18) {
+
+            setMessage(0);
+
+        }
+        else if (value < 35) {
+
+            setMessage(1);
+
+        }
+        else if (value < 55) {
+
+            setMessage(2);
+
+        }
+        else if (value < 75) {
+
+            setMessage(3);
+
+        }
+        else if (value < 94) {
+
+            setMessage(4);
 
         }
         else {
 
-            showLoaderComplete();
+            setMessage(5);
 
         }
 
+
+        updateStages(value);
+
     }
 
 
-    requestAnimationFrame(
-        animateComplete
-    );
+    // =================================================
+    // QUOTE ROTATION
+    // =================================================
 
-}
+    function changeQuote() {
 
-
-// =====================================================
-// LOADER COMPLETE
-// =====================================================
-
-function showLoaderComplete() {
-
-    updateText(
-        loaderStatus,
-        "Everything is ready. ❤️"
-    );
+        if (finished || !quoteText) {
+            return;
+        }
 
 
-    updateText(
-        loaderTip,
-        "Your little journey begins now..."
-    );
+        quoteText.style.opacity = "0";
 
 
-    if (loaderHeart) {
+        setTimeout(function () {
 
-        loaderHeart.classList.add(
-            "loader-heart-complete"
+            if (finished) {
+                return;
+            }
+
+
+            quoteIndex++;
+
+            if (quoteIndex >= quotes.length) {
+                quoteIndex = 0;
+            }
+
+
+            quoteText.textContent =
+                quotes[quoteIndex];
+
+
+            quoteText.style.opacity = "1";
+
+        }, 300);
+
+    }
+
+
+    const quoteTimer =
+        setInterval(
+            changeQuote,
+            3000
+        );
+
+
+    // =================================================
+    // CALCULATE TARGET PROGRESS
+    // =================================================
+
+    function calculateTargetProgress() {
+
+        const elapsed =
+            performance.now() - startTime;
+
+
+        // ---------------------------------------------
+        // Slow beginning
+        // ---------------------------------------------
+
+        if (elapsed < 1200) {
+
+            return 10;
+
+        }
+
+
+        if (elapsed < 2300) {
+
+            return 22;
+
+        }
+
+
+        if (elapsed < 3400) {
+
+            return 35;
+
+        }
+
+
+        if (elapsed < 4600) {
+
+            return 48;
+
+        }
+
+
+        if (elapsed < 5800) {
+
+            return 61;
+
+        }
+
+
+        if (elapsed < 6800) {
+
+            return 73;
+
+        }
+
+
+        if (elapsed < 7600) {
+
+            return 84;
+
+        }
+
+
+        if (elapsed < MINIMUM_TIME) {
+
+            return 93;
+
+        }
+
+
+        // ---------------------------------------------
+        // Don't finish until browser is ready
+        // ---------------------------------------------
+
+        if (!pageReady) {
+
+            return 96;
+
+        }
+
+
+        const extraElapsed =
+            elapsed -
+            MINIMUM_TIME;
+
+
+        const extraProgress =
+            Math.min(
+                4,
+                (
+                    extraElapsed /
+                    READY_BUFFER
+                ) * 4
+            );
+
+
+        return 96 + extraProgress;
+
+    }
+
+
+    // =================================================
+    // FINISH LOADER
+    // =================================================
+
+    function finishLoader() {
+
+        if (finished) {
+            return;
+        }
+
+        finished = true;
+
+
+        clearInterval(
+            quoteTimer
+        );
+
+
+        // ---------------------------------------------
+        // 100%
+        // ---------------------------------------------
+
+        progress = 100;
+
+        updateProgress(100);
+
+
+        // ---------------------------------------------
+        // Complete stages
+        // ---------------------------------------------
+
+        stages.forEach(function (stage) {
+
+            if (!stage) {
+                return;
+            }
+
+
+            stage.classList.remove(
+                "active"
+            );
+
+
+            stage.classList.add(
+                "completed"
+            );
+
+        });
+
+
+        // ---------------------------------------------
+        // Final message
+        // ---------------------------------------------
+
+        if (statusText) {
+
+            statusText.style.opacity = "0";
+
+
+            setTimeout(function () {
+
+                statusText.textContent =
+                    "Everything is ready for you. ❤️";
+
+                statusText.style.opacity =
+                    "1";
+
+            }, 150);
+
+        }
+
+
+        if (subText) {
+
+            subText.textContent =
+                "Your little journey is waiting.";
+
+        }
+
+
+        if (progressLabel) {
+
+            progressLabel.textContent =
+                "Ready ✨";
+
+        }
+
+
+        // ---------------------------------------------
+        // Complete screen
+        // ---------------------------------------------
+
+        setTimeout(function () {
+
+            if (completeScreen) {
+
+                completeScreen.classList.add(
+                    "show"
+                );
+
+            }
+
+        }, 350);
+
+
+        // ---------------------------------------------
+        // Hide loader
+        // ---------------------------------------------
+
+        setTimeout(function () {
+
+            loader.classList.add(
+                "hide"
+            );
+
+
+            setTimeout(function () {
+
+                loader.style.display =
+                    "none";
+
+                loader.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+
+                if (completeScreen) {
+
+                    completeScreen.style.display =
+                        "none";
+
+                }
+
+            }, 1000);
+
+        }, 1600);
+
+    }
+
+
+    // =================================================
+    // ANIMATION LOOP
+    // =================================================
+
+    function animateLoader() {
+
+        if (finished) {
+            return;
+        }
+
+
+        targetProgress =
+            calculateTargetProgress();
+
+
+        // ---------------------------------------------
+        // Smooth movement
+        // ---------------------------------------------
+
+        const difference =
+            targetProgress -
+            progress;
+
+
+        // Faster when far away,
+        // slower when approaching target.
+
+        progress +=
+            difference * 0.045;
+
+
+        // ---------------------------------------------
+        // Prevent tiny floating values
+        // ---------------------------------------------
+
+        if (
+            Math.abs(
+                targetProgress -
+                progress
+            ) < 0.05
+        ) {
+
+            progress =
+                targetProgress;
+
+        }
+
+
+        updateProgress(
+            progress
+        );
+
+
+        // ---------------------------------------------
+        // FINISH CONDITION
+        // ---------------------------------------------
+
+        const elapsed =
+            performance.now() -
+            startTime;
+
+
+        if (
+            pageReady &&
+            elapsed >=
+            MINIMUM_TIME +
+            READY_BUFFER &&
+            progress >= 99.5
+        ) {
+
+            finishLoader();
+
+            return;
+
+        }
+
+
+        requestAnimationFrame(
+            animateLoader
         );
 
     }
 
 
-    if (loader) {
+    // =================================================
+    // START
+    // =================================================
 
-        loader.classList.add(
-            "loader-complete"
-        );
-
-    }
+    updateProgress(0);
 
 
-    // Small pause after 100%
-    setTimeout(() => {
+    // Give browser one frame to paint
+    // the 0% state before animation begins.
 
-        hideLoader();
+    requestAnimationFrame(function () {
 
-    }, 1100);
+        requestAnimationFrame(function () {
 
-}
+            animateLoader();
 
+        });
 
-// =====================================================
-// HIDE LOADER
-// =====================================================
+    });
 
-function hideLoader() {
-
-    if (!loader) return;
+})();
 
 
-    loader.classList.add(
-        "hide"
-    );
-
-
-    setTimeout(() => {
-
-        loader.style.display =
-            "none";
-
-        loader.classList.remove(
-            "active"
-        );
-
-    }, 1200);
-
-}
-
-
-// =====================================================
-// INITIALIZE LOADER
-// =====================================================
-
-async function initializeLoader() {
-
-    console.log(
-        "🌸 Loading journey..."
-    );
-
-
-    // Start animations
-    startFakeProgress();
-
-    startMessageRotation();
-
-    startTipRotation();
-
-
-    // Run actual loading tasks together
-    try {
-
-        await Promise.all([
-
-            waitForWindowLoad(),
-
-            preloadImages(),
-
-            preloadAudio()
-
-        ]);
-
-    }
-    catch (error) {
-
-        console.warn(
-            "Some resources could not be loaded:",
-            error
-        );
-
-    }
-
-
-    // Actual loading complete
-    await finishLoading();
-
-
-    console.log(
-        "❤️ Journey Ready!"
-    );
-
-}
-
-
-// =====================================================
-// START
-// =====================================================
-
-if (loader) {
-
-    loaderStartTime =
-        Date.now();
-
-    initializeLoader();
-
-}
-else {
-
-    console.warn(
-        "⚠️ Loader element not found."
-    );
-
-}
 
 // ==========================
 // Start Journey
@@ -1045,7 +1119,7 @@ if (promiseBtn) {
 // =====================================
 // 🚀 DEBUG: DIRECT STAR SECTION
 // =====================================
-
+/*
 const DEBUG_STAR = false;
 
 if (DEBUG_STAR) {
@@ -1113,3 +1187,4 @@ if (DEBUG_STAR) {
     });
 
 }
+*/
