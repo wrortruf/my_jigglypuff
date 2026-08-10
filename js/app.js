@@ -367,6 +367,10 @@ const continueBtn = document.getElementById("continueBtn");
         );
 
 
+        // =============================================
+        // Percentage
+        // =============================================
+
         if (percentage) {
 
             percentage.textContent =
@@ -374,6 +378,10 @@ const continueBtn = document.getElementById("continueBtn");
 
         }
 
+
+        // =============================================
+        // Counter
+        // =============================================
 
         if (loadedCount) {
 
@@ -383,49 +391,75 @@ const continueBtn = document.getElementById("continueBtn");
         }
 
 
+        // =============================================
+        // Progress Bar
+        // IMPORTANT:
+        // width ke badle transform use kar rahe hain
+        // Mobile par zyada smooth rahega.
+        // =============================================
+
         if (progressBar) {
 
-            progressBar.style.width =
-                value + "%";
+            progressBar.style.transform =
+                `scaleX(${value / 100})`;
 
         }
 
 
-        // ---------------------------------------------
-        // Messages
-        // ---------------------------------------------
+        // =============================================
+        // Message
+        // IMPORTANT:
+        // Har frame message change nahi hoga.
+        // =============================================
+
+        let messageIndex;
+
 
         if (value < 18) {
 
-            setMessage(0);
+            messageIndex = 0;
 
         }
         else if (value < 35) {
 
-            setMessage(1);
+            messageIndex = 1;
 
         }
         else if (value < 55) {
 
-            setMessage(2);
+            messageIndex = 2;
 
         }
         else if (value < 75) {
 
-            setMessage(3);
+            messageIndex = 3;
 
         }
         else if (value < 94) {
 
-            setMessage(4);
+            messageIndex = 4;
 
         }
         else {
 
-            setMessage(5);
+            messageIndex = 5;
 
         }
 
+
+        // Sirf tab message change hoga
+        // jab actual stage change ho.
+
+        if (messageIndex !== currentMessage) {
+
+            setMessage(messageIndex);
+
+        }
+
+
+        // =============================================
+        // Stages
+        // =============================================
 
         updateStages(value);
 

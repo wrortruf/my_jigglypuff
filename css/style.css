@@ -9482,7 +9482,7 @@ a:focus-visible, [tabindex]:focus-visible{
 
     position: relative;
 
-    width: 0%;
+    width: 100%;
 
     height: 100%;
 
@@ -9502,8 +9502,16 @@ a:focus-visible, [tabindex]:focus-visible{
         0 3px 13px
         rgba(242, 77, 135, .27);
 
+    /* JS scaleX() control karega */
+    transform: scaleX(0);
+
+    transform-origin: left center;
+
+    /* Mobile GPU optimization */
+    will-change: transform;
+
     transition:
-        width .35s
+        transform .15s
         cubic-bezier(.2,.8,.2,1);
 
 }
@@ -10770,4 +10778,13 @@ a:focus-visible, [tabindex]:focus-visible{
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+
+    .loader-progress-bar {
+        transition: transform .12s linear;
+        will-change: transform;
+    }
+
 }
