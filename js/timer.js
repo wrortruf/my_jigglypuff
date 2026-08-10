@@ -5,7 +5,7 @@ document.getElementById("countdownScreen");
 // Yaha date set karo
 
 const targetDate =
-new Date("August 28, 2025 08:00:00").getTime();
+new Date("August 28, 2026 08:00:00").getTime();
 
 
 
